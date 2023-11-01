@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/png" href="../../assets/favicon.png">
+    <title>hotaru(n) | monoyoshi.github.io</title>
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+
+    <link rel="stylesheet" href="../../css/main.css">
+
+    <link rel="stylesheet" href="../../css/projects.css">
+
+    <!-- scripts -->
+    <script src="../../javascript/main.js"></script>
+    <script src="../../javascript/footer.js"></script>
+    <script>
+        // insert footer
+        window.addEventListener("load", function () {
+            document.getElementsByTagName("footer")[0].innerHTML = footer(2);
+        });
+    </script>
+
+    <!-- topbar -->
+    <button class="topbar" onClick="topScroll()"></button>
+
+    <!-- sidebar navtabs -->
+    <div class="navtabs" class="sidenav">
+        <a href="../../" id="home">home</a>
+        <a href="../../about" id="about">about me</a>
+        <a href="../../art" id="art">art</a>
+        <a href="../../projects" id="projects">projects</a>
+        <a href="../../contact" id="contact">contact</a>
+    </div>
+
+    <!-- light mode / dark mode toggle -->
+    <div class="container column center" id="pullswitch">
+        <div class="string"></div>
+        <button id="lightdark-mode"></button>
+    </div>
+</head>
+
+<body>
+    work-in-progress.png
+</body>
+
+<footer>
+    [insert footer here]
+</footer>
+
+</html>

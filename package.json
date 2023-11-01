@@ -1,0 +1,32 @@
+{
+  "name": "hotarun",
+  "version": "4.0.1",
+  "description": "my funny discord bot :)",
+  "main": "sword.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node sword.js"
+  },
+  "dependencies": {
+    "@discordjs/opus": "^0.8.0",
+    "@discordjs/voice": "^0.6.0",
+    "better-sqlite3": "^8.1.0",
+    "discord.js": "^13.0.1",
+    "dotenv": "^16.0.3",
+    "enmap": "^5.8.7",
+    "ffmpeg-static": "^4.4.0",
+    "node-gyp": "^9.3.1",
+    "sodium": "^3.0.2",
+    "wanakana": "^5.0.2",
+    "weather-js": "^2.0.0",
+    "bad-words": "^3.0.4"
+  },
+  "engines": {
+    "node": "18.x"
+  },
+  "author": "kyu(rem)",
+  "license": "MIT",
+  "keywords": [
+    "node"
+  ]
+}

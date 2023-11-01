@@ -1,0 +1,115 @@
+{
+    "bot": "admin",
+    "g": "admin",
+    "play": "admin",
+    "activity": "admin",
+    "game": "admin",
+    "stream": "admin",
+    "listen": "admin",
+    "watch": "admin",
+    "compete": "admin",
+    "webhook": "admin",
+    "general": "admin",
+    "status": "admin",
+    "delete": "admin",
+    "del": "admin",
+    "reload": "admin",
+    "r": "admin",
+    "eval": "admin",
+    "brainwash": "admin",
+    "bw": "admin",
+
+    "dbinary": "binary",
+    "tbinary": "binary",
+    "binaryd": "binary",
+    "binaryt": "binary",
+
+    "bday": "birthday",
+
+    "coinflip": "coin",
+
+    "zeller": "dotw",
+
+    "8ball": "eight",
+    "juliana": "eight",
+
+    "e": "emoji",
+    "emojis": "emoji",
+    "emote": "emoji",
+    "emotes": "emoji",
+
+    "upsidedown": "flip",
+
+    "h": "honse",
+    "honseglish": "honse",
+    "honsespeak": "honse",
+    "hornge": "honse",
+    "nihonsego": "honse",
+
+    "cannedlaugh": "laugh",
+    "cannnedlaughter": "laugh",
+    "haha": "laugh",
+    "hahaha": "laugh",
+    "hahahaha": "laugh",
+    "hahahahaha": "laugh",
+    "hahahahahaha": "laugh",
+    "laughtrack": "laugh",
+
+    "calc": "math",
+    "sqrt": "math",
+    "average": "math",
+    "avg": "math",
+    "unitcircle": "math",
+    "uc": "math",
+    "fibonacci": "math",
+    "fib": "math",
+    "fibany": "math",
+
+    "m": "mirror",
+
+    "morsecode": "morse",
+    "mcode": "morse",
+
+    "airhorn": "music",
+    "nya": "music",
+
+    "friend": "notice",
+    "trust": "notice",
+
+    "numberpad": "pin",
+
+    "pong": "ping",
+
+    "recall": "remember",
+    "forget": "remember",
+
+    "roll": "rng",
+    "dice": "rng",
+
+    "rpsls": "rps",
+
+    "s": "sticker",
+    "thanks": "sticker",
+    "heehee": "sticker",
+    "doya": "sticker",
+    "boom": "sticker",
+    "tada": "sticker",
+    "happynewyear": "sticker",
+    "hny": "sticker",
+    "wellwell": "sticker",
+
+    "michael": "surtr",
+
+    "mikaeru": "suruto",
+
+    "t": "test",
+
+    "pkmntype": "type",
+    "typing": "type",
+
+    "w": "weather",
+    "tenki": "weather",
+    "temp": "weather",
+    "temperature": "weather",
+    "degrees": "weather"
+}

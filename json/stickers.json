@@ -1,0 +1,620 @@
+{
+    "hey": "10001",
+    "heythere": "10001",
+    "yoroshiku": "10001",
+    
+    "goodjob": "10002",
+    "otsukare": "10002",
+    
+    "nottethanks": "10003",
+    "arigatou": "10003",
+    
+    "sorry": "10004",
+    "gomenne": "10004",
+    
+    "okay": "10005",
+    "okkee": "10005",
+    "okke-": "10005",
+    "okke": "10005",
+    
+    "nope": "10006",
+    "ng": "10006",
+    
+    "onme": "10006_2",
+    "atsumarou": "10006_2",
+
+    "nice": "10007",
+    "naisu": "10007",
+    
+    "noworries": "10008",
+    "worrynot": "10008",
+    "donmai": "10008",
+    "dontmind": "10008",
+    
+    "wait": "10009",
+    "mattee": "10009",
+    "matte-": "10009",
+    "matte": "10009",
+    
+    "help": "10010",
+    "tasukete": "10010",
+    
+    "heregoes": "10011",
+    "ikuyo": "10011",
+    
+    "now": "10012",
+    "nowisourchance": "10012",
+    "chansu": "10012",
+    "chance": "10012",
+    
+    "heal": "10013",
+    "kaifuku": "10013",
+
+    "yes": "10014",
+    "yatta": "10014",
+    
+    "argh": "10015",
+    "ugh": "10015",
+    "uu": "10015",
+    "uuu": "10015",
+    
+    "heh": "10016",
+    "hah": "10016",
+    "niyari": "10016",
+    
+    "lookout": "10017",
+    "abunai": "10017",
+    
+    "really": "10018",
+    "anona": "10018",
+    "ddd": "10018",
+    
+    "again": "10018_2",
+    "mouikkai": "10018_2",
+    
+    "igotthis": "10019",
+    "makasero": "10019",
+    
+    "omw": "10020",
+    "onmyway": "10020",
+    "imaiku": "10020",
+    
+    "fafu": "fafu",
+    "faffoo": "fafu",
+    "fafnir": "fafu",
+    "fafoo": "fafu",
+    "wahoo": "fafu",
+    
+    "grrr": "10022",
+    "gununu": "10022",
+    
+    "yougotthis": "10022_2",
+    "ganbaree": "10022_2",
+    "ganbare-": "10022_2",
+    "ganbare": "10022_2",
+    "ugotthis": "10022_2",
+    
+    "omg": "10023",
+    "eeek": "10023",
+    "eek": "10023",
+    "hie": "10023",
+    "hie-": "10023",
+    "hiee": "10023",
+    
+    "forreal": "10024",
+    "majide": "10024",
+    
+    "whew": "10025",
+    "ho": "10025",
+    "hoh": "10025",
+    
+    "illleadthecharge": "10026",
+    "kougekitantou": "10026",
+    
+    "imondefense": "10027",
+    "bougyohaore": "10027",
+    "bougyowaore": "10027",
+    
+    "victorywillbeours": "10028",
+    "zettaikatsu": "10028",
+    "midgardsormr": "10028",
+    "mids": "10028",
+    
+    "ineedhealing": "10029",
+    "kaifukumotomu": "10029",
+    
+    "takedefense": "10030",
+    "bougyohamakaseta": "10030",
+    "bougyowamakaseta": "10030",
+    
+    "offenseplease": "10031",
+    "kougekionegai": "10031",
+    
+    "leaveittome": "10101",
+    "makasetekure": "10101",
+    "alfonse": "10101",
+    
+    "letsplay": "10102",
+    "asondeageru": "10102",
+    "veronica": "10102",
+    
+    "letsgo": "10103",
+    "mairimashou": "10103",
+    "fjorm": "10103",
+    
+    "together": "10104",
+    "chikarawoawaseyou": "10104",
+    "chikaraoawaseyou": "10104",
+    "marth": "10104",
+    
+    "solovely": "10105",
+    "lovely": "10105",
+    "yokattawa": "10105",
+    "loki": "10105",
+
+    "whatyousaid": "10201",
+    "whatusaid": "10201",
+    "sousou": "10201",
+
+    "hya": "10202",
+    "hyaa": "10202",
+    "notteheehee": "10202",
+
+    "doya": "10203",
+    "notteboom": "10203",
+
+    "bravo": "10301",
+    "omedetou": "10301",
+
+    "sup": "10302",
+    "ssup": "10302",
+    "konnichiha": "10302",
+    "konnichiwa": "10302",
+
+    "threecheersforme": "10303",
+    "hometehomete": "10303",
+
+    "squishums": "10401",
+    "squishum": "10401",
+    "munimuni": "10401",
+    "imitationsquishums": "10401",
+    "imitationsquishum": "10401",
+    "imitationsquish": "10401",
+    "squish": "10401",
+
+    "intriguing": "10501",
+    "kyoumibukaine": "10501",
+    "heinwald": "10501",
+
+    "wevegotacase": "10502",
+    "jikenda": "10502",
+    "curran": "10502",
+
+    "youcalled": "10503",
+    "ucalled": "10503",
+    "yonda": "10503",
+    "lathna": "10503",
+
+    "megamanishere": "10601",
+    "rokkumantoujou": "10601",
+    "rockmantoujou": "10601",
+
+    "energytank": "10602",
+    "etank": "10602",
+    "ekan": "10602",
+    "megasip": "10602",
+    "megamansip": "10602",
+    "mmsip": "10602",
+
+    "gameover": "10603",
+    "megaboom": "10603",
+    "megamanboom": "10603",
+    "mmboom": "10603",
+
+    "beggingforforgiveness": "10604",
+    "dogeza": "10604",
+    "doctorwily": "10604",
+    "drwily": "10604",
+    "wily": "10604",
+
+    "splendid": "10701",
+    "hometeyarou": "10701",
+    "dragonyule": "10701",
+    "dyxander": "10701",
+    "xander": "10701",
+
+    "wellarentyousweet": "10702",
+    "wellarentusweet": "10702",
+    "yasashiinone": "10702",
+    "dragonyulemalora": "10702",
+    "dymalora": "10702",
+    "malora": "10702",
+
+    "maritimus": "10703",
+    "mariti": "10703",
+    "maritimusheehee": "10703",
+    "maritiheehee": "10703",
+    "maritimustada": "10703",
+    "marititada": "10703",
+    "jajan": "10703",
+    "jajaan": "10703",
+
+    "akemashiteomedetou": "10801",
+    "akemashite": "10801",
+    "happynewyeareuden": "10801",
+    "hnyeuden": "10801",
+    "happynewyearprince": "10801",
+    "hnyprince": "10801",
+
+    "kotoshimoyoroshiku": "10802",
+    "kotoshimo": "10802",
+    "happynewyearelisanne": "10802",
+    "hnyellisanne": "10802",
+    "happynewyearelly": "10802",
+    "hnyelly": "10802",
+
+    "akeome": "10901",
+    "happynewyearmitsuhide": "10901",
+    "hnymitsuhide": "10901",
+    "mitsuhide": "10901",
+
+    "happiinyuuiyaa": "10902",
+    "happynewyearnobunaga": "10902",
+    "hnynobunaga": "10902",
+    "nobunaga": "10902",
+
+    "happyhunting": "11001",
+    "hitokariikouze": "11001",
+    "hunterberserker": "11001",
+    "hberserker": "11001",
+    "herserker": "11001",
+    "berserker": "11001",
+
+    "mmmsotasty": "11002",
+    "jouzuniyakemashita": "11002",
+    "huntervanessa": "11002",
+    "hvanessa": "11002",
+    "vanessa": "11002",
+
+    "illtagalong": "11003",
+    "otomosuruyo": "11003",
+    "huntersarisse": "11003",
+    "hsarisse": "11003",
+    "harisse": "11003",
+
+    "thecatsmeow": "11004",
+    "airuu": "11004",
+    "palico": "11004",
+
+    "left": "11101",
+    "hidari": "11101",
+
+    "upperleft": "11102",
+    "hidariue": "11102",
+
+    "up": "11103",
+    "ue": "11103",
+
+    "upperright": "11104",
+    "migiue": "11104",
+
+    "right": "11105",
+    "migi": "11105",
+
+    "lowerright": "11106",
+    "migishita": "11106",
+
+    "down": "11107",
+    "shita": "11107",
+
+    "lowerleft": "11108",
+    "hidarishita": "11108",
+
+    "keepitup": "11201",
+    "atochotto": "11201",
+    "valentinesmelody": "11201",
+    "vmelody": "11201",
+    "velody": "11201",
+    "melody": "11201",
+
+    "valentinesaddiswellwell": "11202",
+    "vaddiswellwell": "11202",
+    "addiswellwell": "11202",
+    "hou": "11202",
+    "valentinesaddis": "11202",
+    "vaddis": "11202",
+    "addis": "11202",
+
+    "wanttojoinup": "11301",
+    "wannajoinup": "11301",
+    "doumeinikonaika": "11301",
+
+    "letsfighttogether": "11302",
+    "senyuuninarou": "11302",
+
+    "shapeshiftnow": "11303",
+    "kokoderyuukada": "11303",
+
+    "gnight": "11304",
+    "goodnight": "11304",
+    "oyasumi": "11304",
+
+    "seeya": "11305",
+    "cya": "11305",
+    "mataatodena": "11305",
+
+    "timeforabreak": "11306",
+    "chottokyuukei": "11306",
+
+    "puppy": "11401",
+    "dog": "11401",
+    "doggo": "11401",
+    "doggy": "11401",
+    "pupper": "11401",
+    "wagabond": "11401",
+    "wagabondpupper": "11401",
+    "marthjr": "11401",
+
+    "hellothere": "11501",
+    "zun": "11501",
+    "buffluca": "11501",
+
+    "eheh": "11502",
+    "ellydoya": "11502",
+
+    "itsuptoyou": "11503",
+    "itsuptou": "11503",
+    "tanomuze": "11503",
+
+    "sweetdreams": "11601",
+    "iiyumemitene": "11601",
+    "peony": "11601",
+
+    "marmar": "11602",
+    "mar-mar": "11602",
+    "oniichan": "11602",
+    "onii-chan": "11602",
+    "tiki": "11602",
+
+    "anythingcanchange": "11603",
+    "unmeiwokaeru": "11603",
+    "unmeiokaeru": "11603",
+    "acc": "11603",
+    "chrom": "11603",
+
+    "letsbefriends": "11604",
+    "nakayokunaritaidesu": "11604",
+    "sharena": "11604",
+
+    "feh": "11605",
+    "hoo": "11605",
+    "hoot": "11605",
+    "owl": "11605",
+
+    "thisendsnow": "11701",
+    "ikeruyo": "11701",
+    "linnea": "11701",
+
+    "ohmigoshbesties": "11702",
+    "ohmygoshbesties": "11702",
+    "omgbesties": "11702",
+    "zuttomodayo": "11702",
+    "zuttomo": "11702",
+    "ohmigosh": "11702",
+    "ohmygosh": "11702",
+    "besties": "11702",
+    "nadine": "11702",
+
+    "wellwelldearie": "11801",
+    "joudekidayo": "11801",
+    "yukatacassandra": "11801",
+    "ycassandra": "11801",
+    "ycass": "11801",
+    "cassandra": "11801",
+    "cass": "11801",
+
+    "shallwe": "11901",
+    "asondekudasaru": "11901",
+    "halloweenakasha": "11901",
+    "hakasha": "11901",
+    "akasha": "11901",
+
+    "itssuperzombietime": "11902",
+    "honkidashimasu": "11902",
+    "superzombietime": "11902",
+    "zombietime": "11902",
+    "halloweenmelsa": "11902",
+    "hmelsa": "11902",
+    "helsa": "11902",
+    "melsa": "11902",
+
+    "yourethebest": "12001",
+    "itsumoarigatou": "12001",
+    "itsumo": "12001",
+    "youredabest": "12001",
+    "urethebest": "12001",
+    "uredabest": "12001",
+    "urthebest": "12001",
+    "urdabest": "12001",
+    "uthebest": "12001",
+    "udabest": "12001",
+    "youdabest": "12001",
+    "youthebest": "12001",
+
+    "theadventurecontinues": "12002",
+    "korekaramoyoroshiku": "12002",
+    "kkm4649": "12002",
+    "korekaramo": "12002",
+    "kkm": "12002",
+    "zethiazena": "12002",
+
+    "letusbringvictory": "12101",
+    "shouriwookurou": "12101",
+    "shouriookurou": "12101",
+    "dragonyulevictor": "12101",
+    "dyvictor": "12101",
+    "victor": "12101",
+
+    "ringaliiing": "12102",
+    "rinrinrin": "12102",
+    "ring-a-liiing": "12102",
+    "ring-a-ling": "12102",
+    "ringaling": "12102",
+    "rinrinriin": "12102",
+    "rinrinriiin": "12102",
+    "dragonyulelily": "12102",
+    "dylily": "12102",
+    "lily": "12102",
+
+    "heyas": "12201",
+    "oissu": "12201",
+
+    "howcrazyisthat": "12202",
+    "yabaidesune": "12202",
+    "yabai": "12202",
+
+    "fortunesmiles": "12301",
+    "daikichidana": "12301",
+    "seimei": "12301",
+
+    "toaboldnewyear": "12302",
+    "iitoshinishiyou": "12302",
+    "yoshitsune": "12302",
+
+    "itsshowtime": "12401",
+    "showtime": "12401",
+    "shootaimu": "12401",
+    "sho-taimu": "12401",
+    "joker": "12401",
+
+    "persona": "12402",
+    "perusona": "12402",
+
+    "pantherthanks": "12403",
+    "annthanks": "12403",
+    "angato": "12403",
+    "panther": "12403",
+    "ann": "12403",
+
+    "imrelyingonyou": "12404",
+    "tayorinishiteruze": "12404",
+    "imrelyingonu": "12404",
+    "mona": "12404",
+    "morgana": "12404",
+
+    "noproblem": "12405",
+    "noopuroburemu": "12405",
+    "sophie": "12405",
+    "sophia": "12405",
+
+    "teeheeluckyme": "12501",
+    "ueheheumashi": "12501",
+    "uehehe": "12501",
+    "umashi": "12501",
+
+    "ahhbliss": "12502",
+    "shiawase": "12502",
+
+    "thankyoukiss": "12601",
+    "kanshanochuu": "12601",
+    "kansha": "12601",
+    "chuu": "12601",
+    "thankukiss": "12601",
+    "tykiss": "12601",
+
+    "hmph": "12602",
+    "pukuu": "12602",
+    "puku": "12602",
+
+    "idontknow": "12603",
+    "wakaranai": "12603",
+    "idunno": "12603",
+    "idk": "12603",
+    "eudumb": "12603",
+
+    "thatallyagot": "12701",
+    "asobitarinaize": "12702",
+    "childranzal": "12702",
+    "cranzal": "12702",
+    "kidranzal": "12702",
+    "kranzal": "12702",
+
+    "thegameison": "12702",
+    "saashoubudesu": "12702",
+    "humanoidmercury": "12702",
+    "humercury": "12702",
+    "hmercury": "12702",
+    "humerc": "12702",
+    "hmerc": "12702",
+    "mercury": "12702",
+    "merc": "12702",
+
+    "thanksforwaiting": "12801",
+    "omataseshimashita": "12801",
+    "omatase": "12801",
+    "summerieyasu": "12801",
+    "sieyasu": "12801",
+    "ieyasu": "12801",
+
+    "letstakeiteasy": "12802",
+    "guutarashiyou": "12802",
+    "summermitsuhide": "12802",
+    "smitsuhide": "12802",
+
+    "harlewellwell": "doya",
+    "korehakoreha": "12901",
+    "korewakorewa": "12901",
+    "harle": "12901",
+
+    "timetogetserious": "12902",
+    "kokokarada": "12902",
+    "galaeuden": "12902",
+    "galaprince": "12902",
+    "geuden": "12902",
+    "gprince": "12902",
+    "goofden": "12902",
+
+    "bringiton": "12903",
+    "kakatterasshai": "12903",
+    "chelle": "12903",
+
+    "buh": "12904",
+    "fa": "12904",
+    "emile": "12904",
+
+    "heynotbad": "13001",
+    "kiraijanaiyo": "13001",
+    "humanoidjupiter": "13001",
+    "hjupiter": "13001",
+    "hupiter": "13001",
+    "jupiter": "13001",
+    "hupi": "13001",
+    "jupi": "13001",
+
+    "whyme": "13101",
+    "naze": "13101",
+    "humanoidmidgardsormr": "13101",
+    "humanoidmids": "13101",
+    "humids": "13101",
+    "humid": "13101",
+    "hmidgardsormr": "13101",
+    "hmids": "13101",
+
+    "doyaa": "13102",
+    "nedrick": "13102",
+    "ned": "13102",
+    "nedrickboom": "13102",
+    "nedboom": "13102",
+
+    "perfectten": "13103",
+    "eudentada": "13103",
+
+    "praiseworthy": "13201",
+    "appare": "13201",
+    "shingen": "13201",
+
+    "breakallthelimits": "13202",
+    "genkaiwokoeru": "13202",
+    "genkai": "13202",
+    "yukimura": "13202"
+}

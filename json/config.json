@@ -1,0 +1,50 @@
+{
+    "prefix": "-",
+    "color": "0x2fcd73",
+    "allianceID": ["167788062531649537", "497608987340963852"],
+    "kyuID": "167786662515048448",
+    "kyuAliases": ["kyu(rem)", "kyu\\_rem_", "kyu_rem_", "kyu", "q", "kyurem", "marth", "balls", "senpai", "jun-kun", "joker", "normalguy168"],
+    "hotAliases": ["hotar", "hontaru", "ほたる", "ホタル", "蛍", "ほんたる", "ホンタル"],
+
+    "waveList": [
+        "hello", "hi", "hey", "henlo", "hewwo",
+        "yo",
+        "what's up",
+        "bye"
+    ],
+    "thankList": [
+        "ty",
+        "thanks", "thx",
+        "good job", "gj", "great job", "perfect job", "amazing job", "nice job", 
+        "arigathanks",
+        "arigatou",
+        "sankyuu",
+        
+        "merci",
+        "gracias",
+        "danke",
+        "tak",
+        "xiexie",
+        "salamat",
+        "spasibo",
+        "gratias tibi"
+    ],
+    "sleepList": [
+        "gn", "night",
+        "oyasumi",
+        "oyasumarth"
+    ],
+    "birthdayList": [
+        "birthday", "cake", "party",
+        "<3", ":)", ":D", ":0", ":o", "^^", "XD", "owo",
+        "🎊", "🎉", "🥳", "🎂", "🍰", "🧁"
+    ],
+    "dbBlacklist": [
+        "and", "but", "yet", "or", "nor", "for", "so",
+        "although", "altho", "because", "bc", "cuz", "'cuz", "cause", "'cause", "while", "in like", "like", "not", "i am", "im", "i'm", "i’m",
+        "bad", "stupid", "dumb", "weak", "fat", "ugly", "depressed", "awful", "sad", "nothing", "worthless", "lame",
+        "doing", "going", "gonna", "about to", "just", "also",
+        "a", "the", "sorry", "an", "yours", "urs",
+        "in"
+    ]
+}
