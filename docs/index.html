@@ -10,43 +10,203 @@
 
     <link rel="stylesheet" href="../../css/main.css">
 
-    <link rel="stylesheet" href="../../css/projects.css">
-
     <!-- scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
     <script src="../../javascript/main.js"></script>
-    <script src="../../javascript/footer.js"></script>
+    <script src="../../javascript/boilerplate.js"></script>
     <script>
-        // insert footer
-        window.addEventListener("load", function () {
-            document.getElementsByTagName("footer")[0].innerHTML = footer(2);
+        // insert header and footer
+        $(document).ready(function () {
+            $("header").html(header(2, "projects", "hotarun"));
+            $("footer").html(footer(2));
         });
     </script>
 
-    <!-- topbar -->
-    <button class="topbar" onClick="topScroll()"></button>
-
-    <!-- sidebar navtabs -->
-    <div class="navtabs" class="sidenav">
-        <a href="../../" id="home">home</a>
-        <a href="../../about" id="about">about me</a>
-        <a href="../../art" id="art">art</a>
-        <a href="../../projects" id="projects">projects</a>
-        <a href="../../contact" id="contact">contact</a>
-    </div>
-
-    <!-- light mode / dark mode toggle -->
-    <div class="container column center" id="pullswitch">
-        <div class="string"></div>
-        <button id="lightdark-mode"></button>
-    </div>
+    <script src="../../javascript/agecalc.js"></script>
+    <script src="../../javascript/timecalc.js"></script>
+    <script>
+        // calculate age, current time on load
+        $(document).ready(function () {
+            $("#age").text(ageCalc("11/17/2016"));
+            setInterval(() => $("#currenttime").text(`Current time: ${currentUTCTime()}`), 1); // update every millisecond
+        });
+    </script>
 </head>
 
 <body>
-    work-in-progress.png
-</body>
+    <header></header>
 
-<footer>
-    [insert footer here]
-</footer>
+    <article>
+        <div class="flexbox">
+            <div class="frame" style="width: 40%; margin: 0;">
+                <img src="assets/profilepicture.png" alt="hotaru(n)'s first profile picture" style="margin: 0;">
+            </div>
+            <div class="flexbox center" style="width: 60%;">
+                <div style="width: 65%;">
+                    <div class="textbox">
+                        <div class="h2">Touken Robot</div>
+                        <div class="h1">hotaru(n)</div>
+                        <div class="quote">"hahahahaha"</div>
+                        <p>
+                            A robot who was designed with the ootachi Hotarumaru in mind. While he is nothing like the
+                            character he is based on, hotaru(n) still carries a certain mischievous charm to him.
+                            Though, he also probably wishes to see nothing more than the destruction of humanity.
+                            Probably.
+                        </p>
+                        <br>
+                        <div class="h1">Profile</div>
+                    </div>
+                    <table class="transparent" style="margin: auto 15px;">
+                        <tr>
+                            <th>Aliases</th>
+                            <td>
+                                hotaru(n)#6467<br>
+                                Hotaru<br>
+                                Hontaru
+                            </td>
+                        </tr>
+                        <tr><td><br></td></tr>
+                        <tr>
+                            <th>Species</th>
+                            <td>Discord Bot</td>
+                        </tr>
+                        <tr>
+                            <th>Pronouns</th>
+                            <td>He/him</td>
+                        </tr>
+                        <tr>
+                            <th>Birthday</th>
+                            <td>November 17, 2016 (Scorpio; age <span id="age">????</span>)</td>
+                        </tr>
+                        <tr>
+                            <th>Current version</th>
+                            <td>v4.0.1</span></td>
+                        </tr>
+                        <tr>
+                            <th>Residence</th>
+                            <td>"The void"</td>
+                        </tr>
+                        <th>Timezone</th>
+                        <td>
+                            <span class="tooltip">Coordinated Universal Time (UTC)<span class="ttpopup" id="currenttime">Current time: ????/??/?? ??:??:?? UTC</span></span>
+                        </td>
+                        <tr><td><br></td></tr>
+                        <tr>
+                            <th>Likes</th>
+                            <td>
+                                Frogs<br>
+                                Laughing
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Dislikes</th>
+                            <td>
+                                Sleeping<br>
+                                Crowded spaces
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Favorite food</th>
+                            <td>Candy</td>
+                        </tr>
+                        <tr>
+                            <th>Hobbies</th>
+                            <td>
+                                Laughing<br>
+                                Fantasizing about taking over the world
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Special skills</th>
+                            <td>
+                                Harnessing the power of RNG<br>
+                                Arson
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    
+        <br>
+
+        <div class="textbox">
+            <p>
+                <b>hotaru(n)</b> is a Discord bot that does ... funny things. He is written with Javascript (Node.js)
+                and uses Discord.js to interact with the Discord API.
+            </p>
+            <p>
+                He is created and maintained by yours truly (also <b>@kyu_rem_</b> on Discord). He started as an
+                after-school pastime they made out of curiosity. Years later, lots of things happened, and he's like
+                this now. At least he's funny...?
+            </p>
+            <p>
+                Not much is known about his past. Legends say he had a much different name and personality back then,
+                but both he and his creator don't talk abouot this fact at all.
+            </p>
+        </div>
+
+        <br>
+
+        <div class="textbox">
+            <div class="h1">Features</div>
+            <hr>
+            <ul>
+                <li>A memory system using SQLite
+                    <ul>
+                        <li>Remembering a user's birthday</li>
+                        <li>Remembering something a user tells him</li>
+                        <li>"Trusting" users and servers</li>
+                    </ul>
+                </li>
+                <li>Converting text/numbers to/from binary</li>
+                <li>Harnessing the power of RNG
+                    <ul>
+                        <li>Flipping a coin</li>
+                        <li>Consulting the Almighty Magic Eight Ball</li>
+                        <li>Rolling dice</li>
+                    </ul>
+                </li>
+                <li>Being able to tell the day of the week for any given <i>REASONABLE</i> date</li>
+                <li>Helping non-Discord Nitro users use external emoji</li>
+                <li>Speak in cursed languages
+                    <ul>
+                        <li>flip: Upside down, like Claude Fire Emblem</li>
+                        <li>honse: A...language...using emoji.</li>
+                        <li>surtr: The language Surtr Dragalia Lost uses. O eb taom rji duqit ug sierj!</li>
+                        <li>morse: Code.</li>
+                    </ul>
+                <li>Laugh</li>
+                <li>Math.</li>
+                <li><s>Mock</s> mimic a user</li>
+                <li>Be active in voice chat</li>
+                <li>Make PIN codes</li>
+                <li>Ping and pong (but not ping pong)</li>
+                <li>Russian roulette, death and all</li>
+                <li>Rock paper scissors+</li>
+                <li>Revealing a user's soulscream (Blaseball reference)</li>
+                <li>Sending stickers from Dragalia Lost</li>
+                <li>Pokémon type effectiveness checking</li>
+                <li>Checking the weather</li>
+            </ul>
+            <br>
+            <div class="h2">Upcoming Features</div>
+            <ul>
+                <li>MORE bot and user settings</li>
+                <li>guild tools maybe</li>
+                <li>honestly, whatever I feel like doing</li>
+            </ul>
+        </div>
+
+        <br>
+
+        <div class="textbox">
+            <p><b>hotaru(n)</b> is a brainrot project, which means I'll mess with him once every...now and then.</p>
+        </div>
+    </article>
+
+    <footer></footer>
+</body>
 
 </html>
