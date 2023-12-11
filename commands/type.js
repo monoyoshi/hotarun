@@ -34,7 +34,7 @@ exports.run = (bot, message) => {
                     "dragon": pType.defending["dragon"],
                     "dark": pType.defending["dark"],
                     "fairy": pType.defending["fairy"]
-                }
+                };
             }
             else {
                 this.defend = {
@@ -71,8 +71,8 @@ exports.run = (bot, message) => {
                 if (this.defend[type] == 0.5) this.resistant.push(type);
                 if (this.defend[type] == 0.25) this.veryResistant.push(type);
                 if (this.defend[type] == 0) this.immune.push(type);
-            }
-        }
+            };
+        };
 
         get report() {
             let rType = this.pType.typing;
@@ -215,7 +215,7 @@ __Attacking__${attackData}`;
                     // not effective
                     for (let type of ["ghost"]) this.attack[type] *= 0;
 					break;
-                }
+                };
                 case "fighting": {
                     // weak
                     for (let type of ["flying", "psychic", "fairy"]) this.defend[type] *= 2;
@@ -230,7 +230,7 @@ __Attacking__${attackData}`;
                     // not effective
                     for (let type of ["ghost"]) this.attack[type] *= 0;
 					break;
-                }
+                };
                 case "flying": {
                     // weak
                     for (let type of ["rock", "electric", "ice"]) this.defend[type] *= 2;
@@ -245,7 +245,7 @@ __Attacking__${attackData}`;
                     for (let type of ["rock", "steel", "electric"]) this.attack[type] *= 0.5;
                     // not effective
 					break;
-                }
+                };
                 case "poison": {
                     // weak
                     for (let type of ["ground", "psychic"]) this.defend[type] *= 2;
@@ -260,7 +260,7 @@ __Attacking__${attackData}`;
                     // not effective
                     for (let type of ["steel"]) this.attack[type] *= 0;
 					break;
-                }
+                };
                 case "ground": {
                     // weak
                     for (let type of ["water", "grass", "ice"]) this.defend[type] *= 2;
@@ -275,7 +275,7 @@ __Attacking__${attackData}`;
                     // not effective
                     for (let type of ["flying"]) this.attack[type] *= 0;
 					break;
-                }
+                };
                 case "rock": {
                     // weak
                     for (let type of ["fighting", "ground", "steel", "water", "grass"]) this.defend[type] *= 2;
@@ -289,7 +289,7 @@ __Attacking__${attackData}`;
                     for (let type of ["fighting", "ground", "steel"]) this.attack[type] *= 0.5;
                     // not effective
 					break;
-                }
+                };
                 case "bug": {
                     // weak
                     for (let type of ["flying", "rock", "fire"]) this.defend[type] *= 2;
@@ -303,7 +303,7 @@ __Attacking__${attackData}`;
                     for (let type of ["fighting", "flying", "poison", "ghost", "steel", "fire", "fairy"]) this.attack[type] *= 0.5;
                     // not effective
 					break;
-                }
+                };
                 case "ghost": {
                     // weak
                     for (let type of ["ghost", "dark"]) this.defend[type] *= 2;
@@ -319,7 +319,7 @@ __Attacking__${attackData}`;
                     // not effective
                     for (let type of ["normal"]) this.attack[type] *= 0;
 					break;
-                }
+                };
                 case "steel": {
                     // weak
                     for (let type of ["fighting", "ground", "fire"]) this.defend[type] *= 2;
@@ -334,7 +334,7 @@ __Attacking__${attackData}`;
                     for (let type of ["steel", "fire", "water", "electric"]) this.attack[type] *= 0.5;
                     // not effective
 					break;
-                }
+                };
                 case "fire": {
                     // weak
                     for (let type of ["ground", "rock", "water"]) this.defend[type] *= 2;
@@ -348,7 +348,7 @@ __Attacking__${attackData}`;
                     for (let type of ["rock", "fire", "water", "dragon"]) this.attack[type] *= 0.5;
                     // not effective
 					break;
-                }
+                };
                 case "water": {
                     // weak
                     for (let type of ["grass", "electric"]) this.defend[type] *= 2;
@@ -362,7 +362,7 @@ __Attacking__${attackData}`;
                     for (let type of ["water", "grass", "dragon"]) this.attack[type] *= 0.5;
                     // not effective
 					break;
-                }
+                };
                 case "grass": {
                     // weak
                     for (let type of ["flying", "poison", "bug", "fire", "ice"]) this.defend[type] *= 2;
@@ -376,7 +376,7 @@ __Attacking__${attackData}`;
                     for (let type of ["flying", "poison", "bug", "steel", "fire", "grass", "dragon"]) this.attack[type] *= 0.5;
                     // not effective
 					break;
-                }
+                };
                 case "electric": {
                     // weak
                     for (let type of ["ground"]) this.defend[type] *= 2;
@@ -391,7 +391,7 @@ __Attacking__${attackData}`;
                     // not effective
                     for (let type of ["ground"]) this.attack[type] *= 0;
 					break;
-                }
+                };
                 case "psychic": {
                     // weak
                     for (let type of ["bug", "ghost", "dark"]) this.defend[type] *= 2;
@@ -406,7 +406,7 @@ __Attacking__${attackData}`;
                     // not effective
                     for (let type of ["dark"]) this.attack[type] *= 0;
 					break;
-                }
+                };
                 case "ice": {
                     // weak
                     for (let type of ["fighting", "rock", "steel", "fire"]) this.defend[type] *= 2;
@@ -420,7 +420,7 @@ __Attacking__${attackData}`;
                     for (let type of ["steel", "fire", "water", "ice"]) this.attack[type] *= 0.5;
                     // not effective
 					break;
-                }
+                };
                 case "dragon": {
                     // weak
                     for (let type of ["ice", "dragon", "fairy"]) this.defend[type] *= 2;
@@ -435,7 +435,7 @@ __Attacking__${attackData}`;
                     // not effective
                     for (let type of ["fairy"]) this.attack[type] *= 0;
 					break;
-                }
+                };
                 case "dark": {
                     // weak
                     for (let type of ["fighting", "bug", "fairy"]) this.defend[type] *= 2;
@@ -450,7 +450,7 @@ __Attacking__${attackData}`;
                     for (let type of ["fighting", "dark", "fairy"]) this.attack[type] *= 0.5;
                     // not effective
 					break;
-                }
+                };
                 case "fairy": {
                     // weak
                     for (let type of ["poison", "steel"]) this.defend[type] *= 2;
@@ -465,7 +465,7 @@ __Attacking__${attackData}`;
                     for (let type of ["poison", "steel", "fire"]) this.attack[type] *= 0.5;
                     // not effective
                     break;
-                }
+                };
                 default:
                     this.type = "???";
             };

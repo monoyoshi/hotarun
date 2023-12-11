@@ -42,23 +42,23 @@ exports.run = (bot, message) => {
         let userMove = args[i]; // user move for output display
         let lcUserMove = lcArgs[i]; // user move for internal use
 
-        if (lcCommand != "rpsls" && (lcUserMove == "lizard" || lcUserMove == "spock")) result = "That's not a move..."; // rps lizard spock block
-        else if (botMove.toLowerCase() == lcUserMove) result = "It's a tie!"; // user == bot, other than gun leads to a tie
+        if (lcCommand != "rpsls" && (lcUserMove == "lizard" || lcUserMove == "spock")) result = "that's not a move..."; // rps lizard spock block
+        else if (botMove.toLowerCase() == lcUserMove) result = "it's a tie!"; // user == bot, other than gun leads to a tie
         else {
             switch (botMove) {
                 case "Gun":
-                    if (lcUserMove == "gun") result = "... Maybe it's a tie?"; // user: sword; bot: gun
+                    if (lcUserMove == "gun") result = "... maybe it's a tie?"; // user: sword; bot: gun
                     else result = "I win!"; // user: gun; bot: [rock, paper, scissors, lizard, spock]
                     return;
                 case "Sword":
-                    if (lcUserMove == "Sword") result = "One-on-one, huh..."; // user: sword; bot: gun
+                    if (lcUserMove == "Sword") result = "one-on-one, huh..."; // user: sword; bot: gun
                     else result = "I win!"; // user: sword; bot: [rock, paper, scissors, lizard, spock]
                     break;
                 case "Rock":
                     switch (lcUserMove) {
                         case "paper":
                         case "spock":
-                            result = "You win!";
+                            result = "you win!";
                             ++userScore;
                             break;
                         case "scissors":
@@ -76,7 +76,7 @@ exports.run = (bot, message) => {
                             break;
                         case "scissors":
                         case "lizard":
-                            result = "You win!";
+                            result = "you win!";
                             ++userScore;
                     };
                     break;
@@ -84,7 +84,7 @@ exports.run = (bot, message) => {
                     switch (lcUserMove) {
                         case "rock":
                         case "spock":
-                            result = "You win!";
+                            result = "you win!";
                             ++userScore;
                             break;
                         case "paper":
@@ -97,7 +97,7 @@ exports.run = (bot, message) => {
                     switch (lcUserMove) {
                         case "rock":
                         case "scissors":
-                            result = "You win!";
+                            result = "you win!";
                             ++userScore;
                             break;
                         case "paper":
@@ -115,12 +115,12 @@ exports.run = (bot, message) => {
                             break;
                         case "paper":
                         case "lizard":
-                            result = "You win!";
+                            result = "you win!";
                             ++userScore;
                     };
                     break;
                 default:
-                    result = "That's not a move...";
+                    result = "that's not a move...";
             };
         };
 

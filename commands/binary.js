@@ -91,7 +91,7 @@ exports.run = (bot, message) => {
             break;
 
         default:
-            result = "Please specify which binary conversion you would like to perform:\n- decimal to binary: \`dbinary\`\n- text to binary: \`tbinary\`\n- binary to decimal: \`binaryd\`\n- binary to text: \`binaryt\`";
+            result = "okay, but which binary conversion would you like me to perform?\n- decimal to binary: \`dbinary\`\n- text to binary: \`tbinary\`\n- binary to decimal: \`binaryd\`\n- binary to text: \`binaryt\`";
     };
 
     message.reply(result);

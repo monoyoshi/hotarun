@@ -105,6 +105,6 @@ dist
 
 # other
 memory/
-obsolete/
+ignore/
 *.lnk
 package-lock.json

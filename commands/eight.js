@@ -16,38 +16,38 @@ exports.run = (bot, message) => {
 
     if (rng < (1/3)) { // positive
         responses.push(
-            "Yes!",
-            "Absolutely!",
-            "Without a doubt!",
-            "It's certain!",
-            "Positive!",
-            "Of course!",
-            "Yup!",
-            "Heck yeah!"
+            "yes!",
+            "absolutely!",
+            "without a doubt.",
+            "it's certain!",
+            "positive!",
+            "of course!",
+            "yup!",
+            "heck yeah!"
         );
     }
     else if (rng < (2/3)) { // negative
         responses.push(
-            "No!",
-            "Never!",
-            "Not right now.",
-            "Don't count on it.",
-            "Negative...",
-            "Nah.",
-            "Nope!",
-            "Heck no!"
+            "no!",
+            "never.",
+            "not right now.",
+            "don't, uh, count on it.",
+            "negative.",
+            "nah.",
+            "nope!",
+            "heck no!"
         );
     }
     else { // neutral
         responses.push(
-            "Maybe.",
+            "maybe.",
             "I don't know.",
-            "I can't predict it right now...",
-            "I'm not in the position to answer that...",
-            "What?",
-            "Oh... Ask again, sorry.",
-            "I might not be the best one to answer that...",
-            "Heck maybe!"
+            "I can't tell...",
+            "I can't really answer that...",
+            "what?",
+            "yes! no. maybe? I don't know.",
+            "don't ask me...!",
+            "heck...maybe!"
         );
     };
 

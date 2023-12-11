@@ -20,12 +20,12 @@ exports.run = (bot, message) => {
 
         // error handling
         if (err) {
-            message.channel.send(`⚠️ ERROR: An unexpected error has occured. Please try again.\n\`\`\`${err}\`\`\``);
+            message.channel.send(bot.mSE(`An unexpected error has occured. Please try again.\n\`\`\`${err}\`\`\``));
             return;
         }
 
         if (result.length == 0) {
-            message.channel.send(`⚠️ ERROR: Invalid location (${message.argsText}). Please try again.`);
+            message.channel.send(bot.mSE(`Invalid location (${message.argsText}). Please try again.`));
             return;
         }
 

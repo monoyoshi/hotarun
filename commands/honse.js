@@ -148,14 +148,14 @@ exports.run = async (bot, message) => {
     if (!argsText) return;
 
     if (argsText.replace(/\s+/g, "").length > 20) {
-        message.channel.send(`⚠️ ERROR: Input is too long (${argsText.replace(/\s+/g, "").length} - less than 20 characters please!).`); // no longer than 20
+        message.channel.send(bot.mSE(`Input is too long (${argsText.replace(/\s+/g, "").length} - less than 20 characters please!).`)); // no longer than 20
         return;
     };
 
     let c = convert(argsText.toLowerCase()); // convert
 
     if (!c) { // reject if no characters were converted
-        message.channel.send("⚠️ ERROR: Input is invalid.");
+        message.channel.send(bot.mSE("Input is invalid."));
         return;
     };
 
@@ -172,7 +172,7 @@ exports.run = async (bot, message) => {
         message.delete();
         message.channel.send(`Translation: ||${argsText}||`);
 	} catch (e) {
-        message.reply("⚠️ ERROR: Something went wrong! Maybe the webhook isn't set up?");
+        message.reply(bot.mSE("Something went wrong. The webhook's probably not set up."));
         return;
 	};
 

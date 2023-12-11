@@ -15,9 +15,9 @@ exports.run = (bot, message) => {
 
     // inputs
     // example : -help soulscream
-    let commandQ = message.lcArgs[0]; // "soulscream"
+    //let commandQ = message.lcArgs[0]; // "soulscream"
 
-    const commandsList = {
+    /*const commandsList = {
         "admin":
 `Alters certain features of me or the server I am in (I need specific permissions for this. These permissions should come with my invite link though, so as long as my role isn't messed with, I think I should be good.).
 This command consists of five **master-only** subcommands (so unless you're them, you don't really need to see this. ...Why is this here, actually?).`,
@@ -150,7 +150,7 @@ Usage: \`type [text; type 1] [text; type 2 (optional)]\``,
 `Checks the weather from around the world.
 
 Usage: \`weather [text; a valid name of a given place]\``
-    };
+    };*/
 
     let d = new Date(); // check time after every message received
 
@@ -160,20 +160,20 @@ Usage: \`weather [text; a valid name of a given place]\``
         output =
 `\`\`\`(${d.getUTCFullYear()}/${(d.getUTCMonth() + 1).toString().padStart(2, "0")}/${d.getUTCDate().toString().padStart(2, "0")}) NEW MESSAGE
 ------------------------------
-Hey there, (MSNAME__${message.author.username.toUpperCase()})!
+hey there, (MSNAME__${message.author.username.toUpperCase()})!
 \`\`\`** **`;
     }
     else if (bot.annualEvent(4, 2, 4, 8)) {
         output =
-`\`\`\`(${d.getUTCFullYear()}/04/0${d.getUTCDate().toString().padStart(2, "0")}) NEW MESSAGE
+`\`\`\`(${d.getUTCFullYear()}/04/0${d.getUTCDate()}) NEW MESSAGE
 ------------------------------
-Sorry about that, ${message.author.tag}! I should be fine from now on though, so don't worry!
+sorry about that, ${message.author.tag}! I should be fine from now on though, so don't worry!
 \`\`\`** **`;
     };
 
     const embed = new MessageEmbed();
 
-    if (commandsList[commandQ]) {
+    /*if (commandsList[commandQ]) {
         embed
             .setColor(bot.config.color)
             .setTitle(`Help for ${commandQ}`)
@@ -192,21 +192,19 @@ Sorry about that, ${message.author.tag}! I should be fine from now on though, so
         if (output) message.channel.send({ content: output, embeds: [embed] });
         else message.channel.send({ embeds: [embed] });
     }
-    else {
-        let commands = Object.keys(commandsList);
-        commands = commands.join("`, `");
+    else {*/
         embed
             .setColor(bot.config.color)
-            .setTitle(`Help for ${bot.user.tag}`)
+            .setTitle(`help for ${bot.user.tag}`)
             .setThumbnail(bot.user.avatarURL())
             .setDescription(
-`Hello! I am **hotaru(n)**, a combat android! I think I was meant for the battlefield and all, but I like *this* life more. My "master" **kyu(rem)** gave me this new body and told me to "have fun", so here I am!
+`hello! I am **hotaru(n)**, a combat android! I think I was meant for the battlefield and all, but I like *this* life more. **kyu(rem)** is the one who gave me this new body and told me to have fun, so here I am!
 
-For more information on a specific command, write the name of the command after \`${bot.prefix}help\`, like this: \`${bot.prefix}help ping\`.`
+currently, I am cooking. if you need help with commands, then you're kinda out of luck. sorry :(`
             )
-            .addFields({ name: "List of commands", value: `\`${commands}\`` });
+            .addFields({ name: "List of commands", value: `\`${bot.commands.indexes.join("`, `")}\``});
         if (output) message.channel.send({ content: output, embeds: [embed] });
         else message.channel.send({ embeds: [embed] });
-    };
+    //};
 
 };

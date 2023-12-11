@@ -1,8 +1,8 @@
 /*
 
-sword.js
+sword.js (I think people usually call it index.js, but eh I like swords more :))
 
-The heart of Hotaru!
+The heart of hotaru(n)!
 - sets up essential packages and files
 - logs him into Discord
 - sets up event and command handlers
@@ -13,23 +13,24 @@ The heart of Hotaru!
 
 // basic requirements
 const { Client, Intents } = require("discord.js"); // discord.js api
-
 const fs = require('node:fs'); // for event / command handler
 const bot = new Client({
     intents: [
         Intents.FLAGS.GUILDS,
         Intents.FLAGS.GUILD_MESSAGES,
-        Intents.FLAGS.GUILD_VOICE_STATES,
-        Intents.FLAGS.GUILD_MESSAGE_REACTIONS
+        Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+        Intents.FLAGS.GUILD_VOICE_STATES
     ]
 }); // instance of bot
 const enmap = require("enmap"); // for command handling / mapping
 
+// for memory system
 const SQLite = require("better-sqlite3");
 bot.sql = new SQLite("./memory/tracker.sqlite");
 
-require("dotenv").config();
+require("dotenv").config(); // .env file
 
+// swearing filter (just so I don't have to say anything here :))
 const Filter = require("bad-words");
 bot.swearJar = new Filter();
 
@@ -39,23 +40,27 @@ bot.config = require("./json/config.json");
 // activities.json - list of activities hotarun can do + custom status support (for the future)
 const activities = require("./json/activities.json");
 
-// functions
+// punctuation list
+bot.punctList = /[!@#$%^&*()-=_+[\]{}\\|;':",./<>?`~]/g;
 
-// error handler - no more crashing :)
+// error handler - no more crashing - he now just screams (into the void) about what the error is and goes on with his day
 process.on("unhandledRejection", e => {
-    console.log(`${bot.timestamp()}: An error has occurred.
+    console.log(`${bot.timestamp()}: an error has occurred.
     ${e.name}: ${e.message.replace(/(\r\n|\n|\r)/gm, "\n\t")}`);
     return;
 });
 
+// error message template function
 bot.mSE = function messageSoftError(em = "...You did something wrong.") {
     return `⚠️ ERROR: ${em}`;
 }
 
+// as for any function related to time, hotaru(n) operates in UTC (hence the UTC part in the Date methods)
+
 // timestamp function for console logging
 bot.timestamp = function printTime() {
     let d = new Date(); // current time in milliseconds
-    return `${d.getUTCFullYear()}/${(d.getUTCMonth() + 1).toString().padStart(2, "0")}/${d.getUTCDate().toString().padStart(2, "0")} ${d.getUTCHours().toString().padStart(2, "0")}:${d.getUTCMinutes().toString().padStart(2, "0")}:${d.getUTCSeconds().toString().padStart(2, "0")} ${d.getUTCMilliseconds().toString().padStart(3, "0")} UTC`; // timestamp - 2018/09/28 16:20:00 420; internal use
+    return `${d.getUTCFullYear()}/${(d.getUTCMonth() + 1).toString().padStart(2, "0")}/${d.getUTCDate().toString().padStart(2, "0")} ${d.getUTCHours().toString().padStart(2, "0")}:${d.getUTCMinutes().toString().padStart(2, "0")}:${d.getUTCSeconds().toString().padStart(2, "0")} ${d.getUTCMilliseconds().toString().padStart(3, "0")} UTC`; // timestamp - 2018/09/28 16:20:00 420
 };
 
 // annual event function
@@ -64,43 +69,44 @@ bot.annualEvent = function eventDate(startMonth, startDate, endMonth, endDate) {
     d.month = d.getUTCMonth() + 1;
     d.date = d.getUTCDate();
     
-    if (endMonth && endDate) { // end time is specified, meaning there is an event that spans multiple days
-        if (endMonth < startMonth) { // spans between years
-            if ((d.month == startMonth && d.date >= startDate)
-            || (d.month > startMonth && d.month <= 12)
-            || (d.month >= 1 && d.month < endMonth)
-            || (d.month == endMonth && d.date <= startDate))
+    if (endMonth && endDate) { // end time is specified, meaning it is an event that spans multiple days
+        if (endMonth < startMonth) { // endMonth comes before startMonth, meaning the event spans between years
+            if ((d.month == startMonth && d.date >= startDate) // same startMonth, after startDate
+            || (d.month > startMonth && d.month <= 12) // after sartMonth, same year
+            || (d.month >= 1 && d.month < endMonth) // new year, before endMonth
+            || (d.month == endMonth && d.date <= endDate)) // same endMonth, before endDate
                 return true;
         }
         else if (endMonth == startMonth) { // spans in the same month
-            if (d.month == startMonth && d.date >= startDate && d.date <= endDate) return true;
+            if (d.month == startMonth && d.date >= startDate && d.date <= endDate) return true; // between startDate and endDate
         }
         else { // spans between months in the same year
-            if ((d.month == startMonth && d.date >= startDate)
-            || (d.month > startMonth && d.month < endMonth)
-            || (d.month == endMonth && d.date <= endDate))
+            if ((d.month == startMonth && d.date >= startDate) // same startMonth, after startDate
+            || (d.month > startMonth && d.month < endMonth) // between startMonth and endMonth
+            || (d.month == endMonth && d.date <= endDate)) // same endMonth, before endDate
                 return true;
         };
     }
-    else if (d.month == startMonth && d.date == startDate) return true;
+    else if (d.month == startMonth && d.date == startDate) return true; // no endtime; one day event
     return false;
 };
 
+// daily event function
 bot.dailyEvent = function eventTime(startHour, endHour) {
     let d = new Date();
-    d.hour = d.getUTCHours()
-    // end hour is less than start hour, meaning the event happens overnight
-    if (endHour < startHour) if (d.getUTCHours() >= startHour || d.getUTCHours() <= endHour) return true;
-    else if (d.getUTCHours() >= startHour && d.getUTCHours() <= endHour) return true;
+    d.hour = d.getUTCHours();
+    if (endHour < startHour) if (d.hour >= startHour || d.hour <= endHour) return true; // end hour is less than start hour, meaning the event happens overnight
+    else if (d.hour >= startHour && d.hour <= endHour) return true; // event happens for a while
     return false;
 };
 
-// sleeping function - sleeps from 02:00 to 09:59
-bot.sleeping = function sleepTime() { // sleeps from 2:00 AM to 9:59 AM
-    let d = new Date();
-    d.hour = d.getHours();
-    if (d.hour > 1 && d.hour < 10) return true; // sleeping
-    else return false; // awake
+// "sleeps" from 02:00 to 09:59
+// it's to make him look alive, but cuz I don't really host him anywhere, it's useless. keeping it here for the future though
+// he'll sill respond like usual; this usually just triggers cosmetic changes
+// unlike other timekeeping functions, this one works with the timezone of wherever he's hosted at the moment
+bot.sleeping = function sleepTime() {
+    if (bot.dailyEvent(1, 10)) return true; // "asleep"
+    else return false; // "awake"
 }
 
 // game
@@ -148,9 +154,7 @@ bot.game = function activity() {
     return current;
 };
 
-
-
-console.log(`${bot.timestamp()}: It's loading now!`);
+console.log(`${bot.timestamp()}: it's loading now!`);
 
 // event handler
 fs.readdir("./events/", (err, files) => {
@@ -162,7 +166,7 @@ fs.readdir("./events/", (err, files) => {
         ++eventTotal;
         bot.on(eventName, event.bind(null, bot));
     });
-    console.log(`${bot.timestamp()}: Attempting to load ${eventTotal} events...`);
+    console.log(`${bot.timestamp()}: attempting to load ${eventTotal} events...`);
 });
 
 // command handler
@@ -177,7 +181,7 @@ fs.readdir("./commands/", (err, files) => {
         ++commandTotal;
         bot.commands.set(commandName, props);
     });
-    console.log(`${bot.timestamp()}: Attempting to load ${commandTotal} commands...`);
+    console.log(`${bot.timestamp()}: attempting to load ${commandTotal} commands...`);
 });
 
-void bot.login(process.env.DISCORDTOKEN); // hotaru#6467
+void bot.login(process.env.DISCORDTOKEN); // hotaru(n)#6467

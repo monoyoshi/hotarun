@@ -14,7 +14,7 @@ exports.run = (bot, message) => {
     let argsText = message.argsText; // "Dragalia Lost"
 
     if (lcCommand == "recall") {
-        if (!bot.userTable.remember) message.reply("Hmm, I don't think you made me remember anything...right?");
+        if (!bot.userTable.remember) message.reply("hmm, I don't think you made me remember anything...right?");
         else message.reply(`${bot.userTable.remember}`);
         return;
     }
@@ -30,6 +30,6 @@ exports.run = (bot, message) => {
 
     bot.userTable.remember = argsText.replace(/'/g, "''");
     bot.setUserEntry("remember");
-    message.reply("Noted!");
+    message.reply("...noted.");
     
 };

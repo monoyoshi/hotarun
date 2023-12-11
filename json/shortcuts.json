@@ -8,11 +8,7 @@
     "listen": "admin",
     "watch": "admin",
     "compete": "admin",
-    "webhook": "admin",
-    "general": "admin",
     "status": "admin",
-    "delete": "admin",
-    "del": "admin",
     "reload": "admin",
     "r": "admin",
     "eval": "admin",
@@ -40,6 +36,8 @@
 
     "upsidedown": "flip",
 
+    "fc": "fortune",
+
     "h": "honse",
     "honseglish": "honse",
     "honsespeak": "honse",
@@ -66,6 +64,12 @@
     "fibany": "math",
 
     "m": "mirror",
+
+    "mod": "moderator",
+    "webhook": "moderator",
+    "general": "moderator",
+    "delete": "moderator",
+    "del": "moderator",
 
     "morsecode": "morse",
     "mcode": "morse",

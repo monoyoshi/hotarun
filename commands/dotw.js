@@ -15,8 +15,8 @@ exports.run = (bot, message) => {
     let month = lcArgs[1]; // "september"
     let date = lcArgs[2]; // "28"
 
-    const strMonth = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "January", "February"]; // months; january and february are on here twice because the first two don't mean anything
-    const strDay = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]; // days of the week
+    const strMonth = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december", "january", "february"]; // months; january and february are on here twice because the first two don't mean anything
+    const strDay = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]; // days of the week
 
     function zeller(q, m, year) { // zeller equation
         let bigK = year % 100; // year of the century; 1996 = 96, 2000 = 0, 2018 = 18
@@ -31,7 +31,6 @@ exports.run = (bot, message) => {
 
     // month check
     if (!parseInt(month)) { // if month is not a number, check if month is name of the month
-        month = month[0].toUpperCase() + month.substring(1); // make it title case
         if (strMonth.includes(month)) month = strMonth.indexOf(month) + 1; // if it is name of the month, convert into number
         else { // else error
             message.reply(bot.mSE("Input month is invalid."));
@@ -128,6 +127,6 @@ exports.run = (bot, message) => {
             date = date + "th";
     };
 
-    message.reply(`${strMonth[month-1]} ${date}, ${year.toString()} is a **${strDay[result]}**!`);
+    message.reply(`${strMonth[month-1]} ${date}, ${year} is a **${strDay[result]}**!`);
 
 };

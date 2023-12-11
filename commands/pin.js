@@ -28,7 +28,7 @@ exports.run = (bot, message) => {
     function convert(istring) { // convert string function
         let ostring = ""; // output string
         let splstr = istring.split(""); // split input spring
-        if (splstr.length > 50) return `⚠️ ERROR: Input string is too long (${splstr.length} - less than 50 characters please!).`; // 50 character limit
+        if (splstr.length > 50) return bot.mSE(`Input is too long (${splstr.length} - less than 50 characters please!).`); // 50 character limit
         let i = 0, len = splstr.length;
         while (i < len) { // build pin
             if (parseInt(splstr[i])) ostring = ostring + parseInt(splstr[i]); // use number if number
@@ -39,13 +39,13 @@ exports.run = (bot, message) => {
     };
 
     if (!lcArgsText) {
-        message.channel.send("⚠️ ERROR: Invalid input.");
+        message.channel.send(bot.mSE("Input is invalid."));
         return;
     };
 
     var c = convert(message.lcArgsText);
     if (c.length == 0) {
-        message.channel.send("⚠️ ERROR: Invalid input.");
+        message.channel.send(bot.mSE("Input is invalid."));
         return;
     };
 

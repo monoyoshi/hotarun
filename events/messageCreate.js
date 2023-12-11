@@ -2,7 +2,7 @@
 
 messageCreate.js
 
-This event is fired in when a message is sent.
+this event is fired in when a message is sent.
 
 */
 
@@ -14,19 +14,16 @@ const stickers = require("../json/stickers.json");
 
 module.exports = async (bot, message) => {
 
-    // bot is always passed and has all of hotaru's stuff if needed
-    // message is passed when a message is involved
+    // bot is always passed and has all of hotaru(n)'s stuff
+    // message is the message created
 
     // if (!(message.author.id == bot.config.kyuID || message.author.id == bot.user.id)) return; // maintenance :)
 
-    const punctList = /[!@#$%^&*()-=_+[\]{}\\|;':",./<>?`~]/g;
-
-    // interaction blacklist part 1: ignoring webhook messages
-    if (message.webhookId) return;
+    if (message.webhookId) return; // interaction blacklist part 1: ignoring webhook messages
 
     // prefix
     bot.prefix = bot.config.prefix;
-    if (message.content.startsWith(`<@${bot.user.id}> `)) bot.prefix = `<@${bot.user.id}> `;
+    if (message.content.startsWith(`<@${bot.user.id}> `)) bot.prefix = `<@${bot.user.id}> `; // now he responds to pings
     
     // message part identification
     
@@ -43,14 +40,16 @@ module.exports = async (bot, message) => {
     message.lcArgsText = message.lcArgs.join(" "); // "activity play dragalia lost"
 
     // interaction blacklist part 2: ignoring bots, (most) swears / offensive words
-    if (message.author.bot || bot.swearJar.isProfane(message.lcConTrim.split(" ").join("").replace(punctList, ""))) return;
+    if (message.author.bot || bot.swearJar.isProfane(message.lcConTrim.split(" ").join("").replace(bot.punctList, ""))) return;
 
     // emoji
     bot.emoji = bot.emojis;
     bot.emoji.pool = [
         // a pool of random emoji that hotaru can use freely
 
-        // ray emoji :)
+        bot.emoji.hotarun = bot.emoji.cache.find(emoji => emoji.name == "hotarun"), // hotarun
+
+        // ray mystic messenger emoji :)
         bot.emoji.ehhh = bot.emoji.cache.find(emoji => emoji.name == "ray_ehhh_a"), // ehhh
         bot.emoji.happy = bot.emoji.cache.find(emoji => emoji.name == "ray_happy_a"), // happy
         bot.emoji.love = bot.emoji.cache.find(emoji => emoji.name == "ray_flower_a"), // flower
@@ -59,19 +58,29 @@ module.exports = async (bot, message) => {
         bot.emoji.sad = bot.emoji.cache.find(emoji => emoji.name == "ray_sad_a"), // sad
         bot.emoji.what = bot.emoji.cache.find(emoji => emoji.name == "ray_what_a"), // what
 
-        // mystic messenger etc.
+        // other mystic messenger emoji
         bot.emoji.depressed = bot.emoji.cache.find(emote => emote.name == "zen_depressed"), // depressed
         bot.emoji.surprised = bot.emoji.cache.find(emote => emote.name == "yoosung_surprised"), // surprised
         
         // etc.
-        bot.emoji.oyasumarth = bot.emoji.cache.find(emote => emote.name == "oyasumarth"), // oyasumarth
+        bot.emoji.kyurem = bot.emoji.cache.find(emote => emote.name == "kyurem"), // kyurem (it's marth)
+        bot.emoji.keiko = bot.emoji.cache.find(emote => emote.name == "keiko"), // my dog keiko
         bot.emoji.nyo = bot.emoji.cache.find(emote => emote.name == "nyo"), // nyo
-        bot.emoji.marsnug = bot.emoji.cache.find(emote => emote.name == "marsnug") // marsnug
+        bot.emoji.blade = bot.emoji.cache.find(emote => emote.name == "blade"), // blade
+        bot.emoji.pesive = bot.emoji.cache.find(emote => emote.name == "pesive"), // pesive
+        bot.emoji.flood = bot.emoji.cache.find(emote => emote.name == "flood"), // flood
+        bot.emoji.sadrat = bot.emoji.cache.find(emote => emote.name == "sadrat"), // sadrat
+        bot.emoji.marthjr = bot.emoji.cache.find(emote => emote.name == "marthjr"), // marthjr
+
+        // etc. animated
+        bot.emoji.hannah = bot.emoji.cache.find(emote => emote.name == "hannah"), // hannah
+        bot.emoji.wiggle = bot.emoji.cache.find(emote => emote.name == "wiggle"), // wiggle
+        bot.emoji.ratshake = bot.emoji.cache.find(emote => emote.name == "ratshake") // ratshake
     ];
 
     // functions
 
-    // in voice channel - he flips out if the user isn't in any given vc so this is here to stop that
+    // in voice channel - he flips out if the user isn't in a voice channel so this is here to stop that
     bot.inVC = function inVC() {
         if (message.member.voice.channel) return true; // in voice channel
         else return false; // not in voice channel
@@ -80,8 +89,7 @@ module.exports = async (bot, message) => {
     // play local audio
     bot.playLocal = function playLocal(audioPath) {
 
-        // new version new ... voice shenanigans
-        // I have no idea what's going on here
+        // I . have no idea what's going on here actually (one day i will optimize this...or not)
 
         if (!bot.inVC()) return;
 
@@ -215,7 +223,7 @@ module.exports = async (bot, message) => {
     if (bot.annualEvent(4, 1)) {
         bot.aprilfools = Math.random();
         // 31% chance to MSTEXT (x >= 0.69)
-        // works on no prefix commands + fun prefix commands + some prefix commands
+        // affects no prefix commands + some prefix commands
     };
 
     if (!message.lcConTrim.startsWith(bot.prefix) ) { // if message doesn't have prefix : some special commands
@@ -226,7 +234,7 @@ module.exports = async (bot, message) => {
         };
 
         // hotaru's birthday
-        if (bot.annualEvent(11, 17) && message.lcConTrim.includes("happy birthday") && hotaruMention()) message.reply(`Thank you ${message.author}! ${bot.emoji.happy}`);
+        if (bot.annualEvent(11, 17) && message.lcConTrim.includes("happy birthday") && hotaruMention()) message.reply(`thank you ${message.author}! ${bot.emoji.happy}`);
 
         // interaction blacklist part 3: ignores messages in servers that aren't "trusted"
         if (bot.serverTable.trust == 0) return;
@@ -280,15 +288,15 @@ module.exports = async (bot, message) => {
                 let lcOutput = output.toLowerCase();
                     
                 // easter eggs
-                if (hotaruMention()) {
-                    message.channel.send("Hello- wait, what? Hey! You're not me...!");
+                if (hotaruMention(lcOutput)) {
+                    message.channel.send("hello- wait, what? hey! you're not me...!");
                     return;
                 };
 
                 if (bot.userTable.notice == 0) return; // prevents unroled users from triggering dadbot; it can come off as weird
 
                 if (message.author.id != bot.config.kyuID && bot.config.kyuAliases.includes(lcOutput)) {
-                    message.channel.send("Hello- wait, what? Hey! You're not my...!");
+                    message.channel.send("hello- wait, what? hey! you're not my...!");
                     return;
                 };
 
@@ -301,12 +309,12 @@ module.exports = async (bot, message) => {
                 };
 
                 // emoji cleaner using regex
-                if (!/\p{Emoji}/u.test(output)) output = output.replace(punctList, ""); // exception if output ends with emoji
+                if (!/\p{Emoji}/u.test(output)) output = output.replace(bot.punctList, ""); // exception if output ends with emoji
 
                 // filter
                 if (bot.config.dbBlacklist.some(str => lcOutput.includes(str))) return;
 
-                message.channel.send(`Hello ${output.trim()}, I'm Hotaru!`);
+                message.channel.send(`hello ${output.trim()}, I'm hotaru(n)!`);
                 return;
             };
         };
@@ -315,7 +323,7 @@ module.exports = async (bot, message) => {
         if (bot.userTable.notice == 0) return;
 
         // 21st night of september
-        if (bot.annualEvent(9, 21, 9, 30) && message.lcConTrim == "do you remember") message.channel.send("THE 21ST NIGHT OF SEPTEMBER");
+        if (bot.annualEvent(9, 21, 9, 30) && (message.lcConTrim == "do you remember" || message.lcConTrim == "do u remember")) message.channel.send("THE 21ST NIGHT OF SEPTEMBER");
 
         else {
             switch (true) {
@@ -330,6 +338,7 @@ module.exports = async (bot, message) => {
                         else message.reply("Now Playing: Luis Fonsi - Despacito (feat. Daddy Yankee)");
                         return;
                     };
+                    break;
 
                 // among us trap remix
                 case message.lcConTrim.includes(" is a sussy baka"):
@@ -343,7 +352,7 @@ module.exports = async (bot, message) => {
                     if (bot.aprilfools >= 0.69) message.channel.send(`(MSTEXT__CHR_SUS_01)`);
                     else message.channel.send("sus");
                     return;
-                case message.lcConTrim.includes("amogus" && Math.random() < 0.3):
+                case message.lcConTrim.includes("amogus") && Math.random() < 0.3:
                     bot.playLocal("amogus.mp3");
 
                     if (bot.aprilfools >= 0.69) message.channel.send("(MSTEXT__VO_CHR_AMOGUS)");
@@ -414,9 +423,9 @@ module.exports = async (bot, message) => {
             if ((ayyFlag || lololFlag || hahaFlag)
             && !((ayyFlag && lololFlag)
             || (ayyFlag && hahaFlag)
-            || (lololFlag && hahaFlag))) {
+            || (lololFlag && hahaFlag))) { // triggers only if only one extender is present
 
-                if (bot.aprilfools <= 0.69) {
+                if (Math.random() <= 0.3) { // only 30% chance to react (it is annoying sometimes)
                     if (bot.aprilfools >= 0.69) {
                         if (ayyFlag) {
                             message.channel.send(`(MSTEXT__CHR_SPOST_03_${message.lcConTrim.length.toString().padStart(3, "0")})`)
@@ -431,7 +440,7 @@ module.exports = async (bot, message) => {
                             return;
                         };
                     };
-                    output += `${extender(message.lcConTrim)} `; // triggers only if only one extender is present
+                    output += `${extender(message.lcConTrim)} `;
                 };
             };
 
@@ -448,7 +457,7 @@ module.exports = async (bot, message) => {
                 collector.on('end', collected => {
                     if (!responded) {
                         if (bot.aprilfools >= 0.69) message.reply("(MSTEXT__CHR_MARSNUG)");
-                        else message.reply(`${bot.emoji.marsnug}`);
+                        else message.reply(`${bot.emoji.cache.find(emote => emote.name == "marsnug")}`);
                         return;
                     };
                 });
@@ -466,81 +475,34 @@ module.exports = async (bot, message) => {
         // well, kinda.
         // quick commands: commands I didn't feel the need to make a whole new file for
         let output = "";
-        if (bot.aprilfools >= 0.69) {
-            switch (message.lcCommand) {
-                case "cry":
-                    output = "(MSACTION__CRY_00)";
-                    break;
-                case "crysomemore":
-                    output = "(MSACTION__CRY_01)";
-                    break;
-                case "d20":
-                    output = `(MSACTION__DICEROLL_20_${(Math.floor(Math.random() * 20) + 1).padStart(2, "0")})`;
-                    break;
-                case "hug":
-                    output = `(MSACTION__HUG_00_${message.author.id.padStart(18, "0")})`;
-                    break;
-                case "providecomfortandsupportandbeagoodfriendforalongtime":
-                    output = `(MSACTION__HUG_01_${message.author.id.padStart(18, "0")})`;
-                    break;
-                case "kiss":
-                    if (Math.random() < 0.000001) output = `(MSACTION__KISS_777_${message.author.id.padStart(18, "0")})`; // 0.0001% chance to uhh...
-                    else output = `(MSACTION__KISS_001_${message.author.id.padStart(18, "0")})`; // 99.9999% chance to kiss on the cheek :)
-                    break;
-                case "pat":
-                case "pet":
-                    output = `(MSACTION__PAT_${message.author.id.padStart(18, "0")})`;
-                    break;
-                case "kick":
-                    output = "(MSSENSATION__PAIN_00)";
-                    break;
-                case "punch":
-                    output = "(MSSENSATION__PAIN_01)";
-                    break;
-                case "slap":
-                    output = "(MSSENSATION__PAIN_02)";
-                    break;
-                case "avatar":
-                    output = `${message.author.avatarURL()}`;
-                    break;
-                case "servericon":
-                    output = `${message.guild.iconURL()}`;
-            };
-        }
-        else {
-            switch (message.lcCommand) {
-                case "cry":
-                    output = "*lies down and cries*";
-                    break;
-                case "crysomemore":
-                    output = "*lies down and cries some more*";
-                    break;
-                case "d20":
-                    output = `Oh, I rolled a \`${Math.floor(Math.random() * 20) + 1}\`.`;
-                    break;
-                case "hug":
-                case "providecomfortandsupportandbeagoodfriendforalongtime":
-                    output = "\*hugs you*";
-                    break;
-                case "kiss":
-                    if (Math.random() < 0.000001) output = "\*kisses you on the forehead*";
-                    else output = "\*kisses you on the cheek*";
-                    break;
-                case "pat":
-                case "pet":
-                    output = "\*pats you*";
-                    break;
-                case "kick":
-                case "punch":
-                case "slap":
-                    output = "ow";
-                    break;
-                case "avatar":
-                    output = `Here you go: ${message.author.avatarURL()}`;
-                    break;
-                case "servericon":
-                    output = `Here you go: ${message.guild.iconURL()}`;
-            };
+        switch (message.lcCommand) {
+            case "cry":
+                output = "*lies down and cries*";
+                break;
+            case "crysomemore":
+                output = "*lies down and cries some more*";
+                break;
+            case "d20":
+                output = `oh, I rolled a \`${Math.floor(Math.random() * 20) + 1}\`.`;
+                break;
+            case "hug":
+            case "providecomfortandsupportandbeagoodfriendforalongtime":
+                output = "\*hugs you*";
+                break;
+            case "pat":
+            case "pet":
+                output = "\*pats you*";
+                break;
+            case "kick":
+            case "punch":
+            case "slap":
+                output = "ow";
+                break;
+            case "avatar":
+                output = `Here you go: ${message.author.avatarURL()}`;
+                break;
+            case "servericon":
+                output = `Here you go: ${message.guild.iconURL()}`;
         };
         if (output) {
             message.channel.send(output);

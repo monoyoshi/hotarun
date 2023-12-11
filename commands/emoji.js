@@ -68,12 +68,12 @@ exports.run = async (bot, message) => {
 
             message.delete();
 	    } catch (e) {
-            message.channel.send(bot.mSE("Something went wrong! Maybe the webhook isn't set up?"));
+            message.channel.send(bot.mSE("Something went wrong. The webhook's probably not set up."));
             return;
     	};
     };
 
-    // post unknown emojis
+    // post unknown emoji
     if (unknown) message.channel.send(`I wasn't able to find the following emoji: ${unknown}`);
 
 };

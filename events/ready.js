@@ -3,7 +3,7 @@
 ready.js
 
 this is a one-time-only event that occurs when hotaru connects to discord
-- mayhas a chance to play a game at login
+- has a chance to play a game at login
 
 */
 
@@ -12,12 +12,13 @@ module.exports = (bot) => {
     // bot is always passed and has all of hotaru(n)'s stuff
 
     // set start game
-    console.log(`${bot.timestamp()}: Attempting to set activity...`);
+    console.log(`${bot.timestamp()}: attempting to set activity...`);
     let startGame = bot.game();
     if (startGame) bot.user.setActivity(startGame.name, {type: startGame.activityType});
 
-    console.log(`${bot.timestamp()}: Attempting to load the user database...`);
+    console.log(`${bot.timestamp()}: attempting to load the user database...`);
     const userTracker = bot.sql.prepare("SELECT count(*) FROM sqlite_master WHERE type='table' AND name = 'users';").get();
+    let columnsList = [];
     if (!userTracker["count(*)"]) {
         
         bot.sql.pragma("synchronous = 1");
@@ -29,7 +30,7 @@ module.exports = (bot) => {
         // bot.sql.prepare("CREATE UNIQUE INDEX idx_userTracker_id ON userTracker (id);").run();
     };
 
-    let columnsList = [
+    columnsList = [
         "notice INTEGER DEFAULT 0", // notice flag
 
         // rpg elements
@@ -53,7 +54,7 @@ module.exports = (bot) => {
         };
     };
 
-    console.log(`${bot.timestamp()}: Attempting to load the server database...`);
+    console.log(`${bot.timestamp()}: attempting to load the server database...`);
     const serverTracker = bot.sql.prepare("SELECT count(*) FROM sqlite_master WHERE type='table' AND name = 'servers';").get();
     if (!serverTracker["count(*)"]) {
         // If the table isn't there, create it and setup the database correctly.
@@ -92,5 +93,5 @@ module.exports = (bot) => {
         else bot.sql.prepare(`UPDATE servers SET ${entry} = ${eval(`bot.serverTable.${entry}`)} WHERE id = ${serverID};`).run();
     };
 
-    console.log(`${bot.timestamp()}: I'm Hotaru, from the laptop of kyu(rem). Tada! This is what you'd call a "headline-worthy introduction," right?`); // he's ready!
+    console.log(`${bot.timestamp()}: I'm hotaru(n), from the laptop of kyu(rem). tada! this is what you'd call a "headline-worthy introduction," right?`); // he's ready!
 };

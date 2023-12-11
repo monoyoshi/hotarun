@@ -62,9 +62,9 @@ exports.run = (bot, message) => {
     else { // coin flipped only once
         result = coinFlip(sidemode);
 
-        if (result == 0) output = "Oh, I got **heads**.";
-        else if (result == 1) output = "Oh, I got **tails**.";
-        else output = "Oh, the coin landed on its **side**!"; // side
+        if (result == 0) output = "oh, I got **heads**.";
+        else if (result == 1) output = "oh, I got **tails**.";
+        else output = "oh? the coin landed **on its side**!"; // side
     };
 
     message.reply(output);

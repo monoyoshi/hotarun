@@ -74,7 +74,7 @@ exports.run = (bot, message) => {
     function convert(istring) { // convert string function
         let ostring = ""; // output string
         let splstr = istring.split(""); // split input string
-        if (splstr.length > 50) return `⚠️ ERROR: Inputted string is too long (${splstr.length} - less than 50 characters please!).`; // 50 character limit
+        if (splstr.length > 50) return bot.mSE(`Input is too long (${splstr.length} - less than 50 characters please!).`); // 50 character limit
         let i = 0, len = splstr.length;
         while (i < len) { // build morse code
             ostring = ostring.trim(); // trim whitespace
@@ -85,12 +85,12 @@ exports.run = (bot, message) => {
     };
 
     if (!lcArgsText) { // nothing to input
-        message.channel.send("⚠️ ERROR: Invalid input.");
+        message.channel.send(bot.mSE("Input is invalid."));
         return;
     };
     let c = convert(message.lcArgsText);
     if (c.length == 0) {
-        message.channel.send("⚠️ ERROR: Invalid input.");
+        message.channel.send(bot.mSE("Input is invalid."));
         return;
     };
 

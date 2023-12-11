@@ -2,11 +2,11 @@
 
 math.js
 
-hotaru does math
-- unit circle database
+hotaru(n) does math
+- calculate square roots
 - calculate averages
 - calculate any number in the fibonacci sequence
-- simple calculator (+ - * / ^)
+- simple calculator (emdas)
 
 */
 
@@ -155,7 +155,7 @@ exports.run = (bot, message) => {
 
                     case calcChar == ".": 
                         if (tDecFlag) {
-                            message.reply(`⚠️ ERROR: Input is invalid.`);
+                            message.reply(bot.mSE("Input is invalid."));
                             return;
                         };
                         term = `${term}.`;
@@ -187,7 +187,7 @@ exports.run = (bot, message) => {
                         break;
 
                     default: // NaN results in an error
-                        message.reply("⚠️ ERROR: Input is invalid.");
+                        message.reply(bot.mSE("Input is invalid."));
                         return;
                 };
 

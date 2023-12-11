@@ -2,13 +2,13 @@
 
 admin.js
 
-a bunch of admin commands, for both hotaru and the server (he needs a role for this, which should come with the discord invite link).
-- activity : sets hotaru's activity, shown under his name. activity / game / play = playing, stream = playing (live on twitch), listen = listening to, watch = watching. blank entry removes game.
-- webhook : creates a webhook for the channel it is used on. enables some features.
-- eval : run javascript code
+a bunch of admin commands that basically edit hotaru(n) in various ways. generally not for public use. I mean, unless you're the owner of the instance.
+- activity : sets hotaru(n)'s activity, shown under his name. activity / game / play = playing, stream = playing ("live on twitch"), listen = listening to, watch = watching. blank entry removes game.
+- exit : safely shut down hotaru(n).
+
+- eval : directly run javascript code.
 - status : sets hotaru's status. online = green, idle = yellow, invisible = gray (plus offline status), dnd = red.
-- delete : deletes messages (1-100 messages from the past two weeks).
-- reload : reload commands.
+- reload : reload commands. great for testing on the go.
 - brainwash : directly edit hotarun's sqlite database.
 
 */
@@ -90,43 +90,29 @@ exports.run = async (bot, message) => {
             bot.user.setActivity(outputGame.name, {type: outputGame.activityType}); // sets activity
 
             if (outputGame.activityType == "LISTENING") { // (grammar fix) listening to Crab Rave : -listen Crab Rave
-                message.reply(`Okay, I'm now listening to **${outputGame.name}**.`);
+                message.reply(`okay, I'm now listening to **${outputGame.name}**.`);
                 return;
             }
             else if (outputGame.activityType == "COMPETING") { // (grammar fix) competing in Alberian Battle Royale : -compete Alberian Battle Royale
-                message.reply(`Okay, I'm now competing in **${outputGame.name}**.`);
+                message.reply(`okay, I'm now competing in **${outputGame.name}**.`);
                 return;
             }
             else {
-                if (outputGame.name.length < 1) message.reply("Okay, I'm not doing anything anymore.");
-                else message.reply(`Okay, I'm now ${outputGame.activityType.toLowerCase()} **${outputGame.name}**.`);
+                if (outputGame.name.length < 1) message.reply("okay, I'm not doing anything anymore.");
+                else message.reply(`okay, I'm now ${outputGame.activityType.toLowerCase()} **${outputGame.name}**.`);
                 return;
             };
         };
 
-        case "webhook": // webhook - initializes hotaru's webhook
-            message.channel.createWebhook("hotaru(n)'s webhook", {
-                avatar: bot.user.avatarURL(),
-            }).then(
-                message.reply("Okay, webhook created.")
-            );
-            return;
-
-        case "general":
-            bot.serverTable.general = message.channel.id;
-            bot.setServerEntry("general");
-            message.reply("Okay, I'll speak here.");
-            return;
-        
         case "exit":
-            message.reply("Oh, alright! Initiating shutdown...").then(() => {
-                console.log(`${bot.timestamp()}: Going offline...`);
+            message.reply("understood! now initiating shutdown...").then(() => {
+                console.log(`${bot.timestamp()}: going offline...`);
                 bot.user.setStatus("invisible");
             }).then(() => {
-                console.log(`${bot.timestamp()}: Saving and closing my database...`);
+                console.log(`${bot.timestamp()}: saving and closing my database...`);
                 bot.sql.close();
             }).then(() => {
-                console.log(`${bot.timestamp()}: Wrapping things up... See you later, master!`);
+                console.log(`${bot.timestamp()}: wrapping things up...`);
                 process.exit(0);
             });
     };
@@ -167,27 +153,10 @@ exports.run = async (bot, message) => {
             let status = lcArgs[0];
             if (status == "online" || status == "idle" || status == "invisible" || status == "dnd") { // accepted statuses
                 bot.user.setStatus(status).then(
-                    message.reply(`Understood! I am now **${status}**.`)
+                    message.reply(`understood! I am now **${status}**.`)
                 );
             }
-            else message.reply("Uh, you know I can't do that..."); // invalid option
-            return;
-        };
-
-        case "del":
-        case "delete": {
-            let r = parseInt(lcArgs[0]); // messages to delete; any decimals will be ignored
-            if (!r) return; // ignore if nonsense
-            if (r > 100) r = 100; // upper cap 100 message
-            else if (r < 1) r = 1; // lower cap 1 message
-
-            message.delete().then(() => {
-                message.channel.bulkDelete(r, true);
-            }); // delete action + r messages
-            
-            // console logging
-            // if (r == 1) console.log(`${bot.timestamp()}: Deleted a message.`);
-            // else console.log(`${bot.timestamp()}: Deleted ${r} messages.`);
+            else message.reply("uh, you know I can't do that..."); // invalid option
             return;
         };
 
@@ -213,7 +182,7 @@ exports.run = async (bot, message) => {
                 ++i;
             };
 
-            if (isCommands) output = `Okay. The following commands have been reloaded: ${isCommands}`;
+            if (isCommands) output = `okay. the following commands have been reloaded: ${isCommands}`;
             if (!!notCommands) output += `\nI wasn't able to find the following commands: ${notCommands}`;
             message.reply(output);
             return;

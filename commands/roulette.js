@@ -2,7 +2,7 @@
 
 roulette.js
 
-testing
+russian roulette
 
 */
 

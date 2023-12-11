@@ -36,7 +36,7 @@ exports.run = (bot, message) => {
 - five: **${dice[4]}**.
 - six: **${dice[5]}**.`
         }
-        else output = `Oh, I rolled a **${rng}**.\n`; // heads
+        else output = `oh, I rolled a **${rng}**.\n`; // heads
         message.reply(output);
         return;
     };
@@ -53,7 +53,7 @@ exports.run = (bot, message) => {
     if (!min) min = 1;
     if (!max) max = 10;
     if (max <= min) max = min + 1;
-    if (min == 0) ++max; // something
+    if (min == 0) ++max; // maximum adjust
     rolls = "";
     let i = 0;
     while (i < times) {
@@ -76,7 +76,7 @@ exports.run = (bot, message) => {
         ++i;
     };
 
-    if (min == 0) --max; // something
-    message.reply(`From the numbers **${min}** to **${max}**, I got\n**${rolls}**.`); // generates (times = 5, min = 1, max = 10) From the numbers 1 to 5, I got **2, 6, 10, 4, and 8**.
+    if (min == 0) --max; // maximum adjust
+    message.reply(`from the numbers **${min}** to **${max}**, I got\n**${rolls}**.`); // generates (times = 5, min = 1, max = 10) From the numbers 1 to 5, I got **2, 6, 10, 4, and 8**.
 
 };

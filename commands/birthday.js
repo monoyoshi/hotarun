@@ -2,7 +2,7 @@
 
 birthday.js
 
-
+birthday tracker. he will remember your birthday. after that, he can calculate the number of days left until the next birthday.
 
 */
 
@@ -12,11 +12,11 @@ exports.run = (bot, message) => {
     // example: -birthday July 30
     let lcArgs = message.lcArgs; // ["july", "30"]
 
-    const strMonth = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; // months; january and february are on here twice because the first two don't mean anything
+    const strMonth = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
 
     if (lcArgs.length == 0) {
         if (bot.userTable.bdayMonth == 99 || bot.userTable.bdayDate == 99) {
-            message.reply(`...Huh. I don't seem to remember your birthday.\nSet it with the following command: \`${bot.prefix}birthday [month; 1-12 or the full name of the month] [date; 1-31 within reason]\``);
+            message.reply(`...huh. I don't think I know when your birthday is. you should tell me using the following command: \`${bot.prefix}birthday [month; 1-12 or the full name of the month] [date; 1-31 within reason]\``);
             return;
         };
 
@@ -36,8 +36,8 @@ exports.run = (bot, message) => {
                 strDate += "th";
         };
 
-        let output = `Oh! Your birthday is on ${strMonth[bot.userTable.bdayMonth - 1]} ${strDate}!`;
-        if (bot.annualEvent(bot.userTable.bdayMonth, bot.userTable.bdayDate)) output += ` It's your birthday where I'm at, so **happy birthday**! ${bot.emoji.party}`
+        let output = `hmm... my records tell me that your birthday is on **${strMonth[bot.userTable.bdayMonth - 1]} ${strDate}**.`;
+        if (bot.annualEvent(bot.userTable.bdayMonth, bot.userTable.bdayDate)) output += ` oh! it's your birthday where I'm at, so **happy birthday**! ${bot.emoji.party}`
         else {
             let d = new Date();
             d.setHours(0,0,0,0);
@@ -50,8 +50,8 @@ exports.run = (bot, message) => {
             else bd = new Date(`${bd}/${d.getUTCFullYear()}`);
 
             let daysLeft = Math.round((bd.getTime() - d.getTime()) / 86400000); // divide by number of milliseconds in a day
-            if (daysLeft == 1) output += ` There is **only one day left** until then! ${bot.emoji.happy}`;
-            else output += ` There are **${daysLeft} days left** until then!`;
+            if (daysLeft == 1) output += ` there's **only one day left** until then! 👀`;
+            else output += ` there are **${daysLeft} days left** until then! ${bot.emoji.happy}`;
         }
         message.reply(output);
         return;
@@ -70,8 +70,7 @@ exports.run = (bot, message) => {
     let date = lcArgs[1]; // "30"
 
     // month check
-    if (!parseInt(month)) { // if month is not a number,    
-        month = month[0].toUpperCase() + month.substring(1); // make it title case
+    if (!parseInt(month)) { // if month is not a number,
         if (!strMonth.includes(month)) { // check if month is name of the month
             message.reply(bot.mSE("Input month is invalid."));
             return;
@@ -94,13 +93,13 @@ exports.run = (bot, message) => {
     || (month == 2 && date > 29)) { // or if it is february and the input date is greater than 29
         message.reply(bot.mSE("Input date is invalid."));
         return;
-    }
+    };
 
     bot.userTable.bdayMonth = month;
     bot.userTable.bdayDate = date;
 
     bot.setUserEntry("bdayMonth");
     bot.setUserEntry("bdayDate");
-    message.reply("Noted.");
+    message.reply("...noted.");
     
 };

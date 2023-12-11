@@ -6,272 +6,12 @@ speak like surtr dragalia lost! now in japanese
 
 */
 
+// surtrspeak.json - surtr cipher dictionary database
+const scdb = require("../json/surtrspeak.json");
+
 const wanakana = require("wanakana"); // wanakana - easy kana to romaji converter
 
 exports.run = async (bot, message) => {
-
-    // dictionaries
-    // suruto
-    const suruto = {
-        "あ": "３",
-        "い": "e",
-        "う": "４",
-        "え": "５",
-        "お": "６",
-        "か": "t",
-        "き": "g",
-        "く": "h",
-        "け": "：",
-        "こ": "b",
-        "さ": "x",
-        "し": "d",
-        "す": "r",
-        "せ": "p",
-        "そ": "c",
-        "た": "q",
-        "ち": "a",
-        "つ": "z",
-        "て": "w",
-        "と": "s",
-        "な": "u",
-        "に": "i",
-        "ぬ": "１",
-        "ね": "，",
-        "の": "k",
-        "は": "f",
-        "ひ": "v",
-        "ふ": "２",
-        "へ": "＾",
-        "ほ": "ー",
-        "ま": "j",
-        "み": "n",
-        "む": "］",
-        "め": "／",
-        "も": "m",
-        "や": "７",
-        "ゆ": "８",
-        "よ": "９",
-        "ら": "o",
-        "り": "l",
-        "る": "．",
-        "れ": "；",
-        "ろ": "¥",
-        "わ": "０",
-        "を": "［",
-        "ん": "y",
-        "ー": "￥",
-        "が": "t",
-        "ぎ": "g",
-        "ぐ": "h",
-        "げ": "：",
-        "ご": "b",
-        "ざ": "x",
-        "じ": "d",
-        "ず": "r",
-        "ぜ": "p",
-        "ぞ": "c",
-        "だ": "q",
-        "ち": "a",
-        "づ": "z",
-        "で": "w",
-        "ど": "s",
-        "ば": "f",
-        "び": "v",
-        "ぶ": "２",
-        "べ": "＾",
-        "ぼ": "ー",
-        "ぱ": "f",
-        "ぴ": "v",
-        "ぷ": "２",
-        "ぺ": "＾",
-        "ぽ": "ー",
-        "ぁ": "＃",
-        "ぅ": "＄",
-        "ぇ": "％",
-        "ぉ": "＆",
-        "ゃ": "’",
-        "ゅ": "（",
-        "ょ": "）"
-    };
-
-    const fullwidth = {
-        "b": "ｂ",
-        "c": "ｃ",
-        "d": "ｄ",
-        "f": "ｆ",
-        "g": "ｇ",
-        "h": "ｈ",
-        "j": "ｊ",
-        "k": "ｋ",
-        "l": "ｌ",
-        "m": "ｍ",
-        "n": "ｎ",
-        "p": "ｐ",
-        "q": "ｑ",
-        "r": "ｒ",
-        "s": "ｓ",
-        "t": "ｔ",
-        "v": "ｖ",
-        "w": "ｗ",
-        "x": "ｘ",
-        "y": "ｙ",
-        "z": "ｚ"
-    };
-
-    // mikaeru
-    const customRomaji = {
-        "。": "。",
-        "、": "、",
-        "！": "！",
-        "？": "？",
-        "］": "］",
-        "［": "［",
-        "～": "～",
-        "＃": "＃",
-        "＄": "＄",
-        "％": "％",
-        "＆": "＆",
-        "　": "　",
-        "１": "1",
-        "２": "2",
-        "３": "3",
-        "４": "4",
-        "５": "5",
-        "６": "6",
-        "７": "7",
-        "８": "8",
-        "９": "9",
-        "０": "0",
-        "＾": "^",
-        "’": "'",
-        "ゎ": "lwa",
-        "ゃ": "lya",
-        "ゅ": "lyu",
-        "ょ": "lyo",
-        "ぁ": "xa",
-        "ぃ": "xi",
-        "ぅ": "xu",
-        "ぇ": "xe",
-        "ぉ": "xo",
-        "ちぃ": "cyi",
-        "ふぁ": "fa",
-        "ふぃ": "fi",
-        "ふぇ": "fe",
-        "ふぉ": "fo",
-        "くぁ": "qa",
-        "くぃ": "qi",
-        "くぅ": "qu",
-        "くぇ": "qe",
-        "くぉ": "qo",
-        "すぁ": "swa",
-        "すぃ": "swi",
-        "すぅ": "swu",
-        "すぇ": "swe",
-        "すぉ": "swo",
-        "てゃ": "tha",
-        "てぃ": "thi",
-        "てゅ": "thu",
-        "てぇ": "the",
-        "てょ": "tho",
-        "つぁ": "tsa",
-        "つぃ": "tsi",
-        "つぇ": "tse",
-        "つぉ": "tso",
-        "とぁ": "twa",
-        "とぃ": "twi",
-        "とぅ": "twu",
-        "とぇ": "twe",
-        "とぉ": "two",
-        "ちゃ": "twa",
-        "ちゅ": "twu",
-        "ちぇ": "twe",
-        "ちょ": "two",
-        "うぁ": "twa",
-        "うぃ": "wi",
-        "うぇ": "we",
-        "うぉ": "two"
-    };
-
-    const halfwidth = {
-        "ｃ": "c",
-        "ｂ": "b",
-        "ｄ": "d",
-        "ｆ": "f",
-        "ｇ": "g",
-        "ｈ": "h",
-        "ｊ": "j",
-        "ｋ": "k",
-        "ｌ": "l",
-        "ｍ": "m",
-        "ｎ": "n",
-        "ｐ": "p",
-        "ｑ": "q",
-        "ｒ": "r",
-        "ｓ": "s",
-        "ｔ": "t",
-        "ｖ": "v",
-        "ｗ": "w",
-        "ｘ": "x",
-        "ｙ": "y",
-        "ｚ": "z"
-    };
-
-    const mikaeru = {
-        "3": "あ",
-        "e": "い",
-        "4": "う",
-        "5": "え",
-        "6": "お",
-        "t": "か",
-        "g": "き",
-        "h": "く",
-        ":": "け",
-        "b": "こ",
-        "x": "さ",
-        "d": "し",
-        "r": "す",
-        "p": "せ",
-        "c": "そ",
-        "q": "た",
-        "a": "ち",
-        "z": "つ",
-        "w": "て",
-        "s": "と",
-        "u": "な",
-        "i": "に",
-        "1": "ぬ",
-        "，": "ね",
-        "k": "の",
-        "f": "は",
-        "v": "ひ",
-        "2": "ふ",
-        "^": "へ",
-        "-": "ほ",
-        "j": "ま",
-        "n": "み",
-        "］": "む",
-        "／": "め",
-        "m": "も",
-        "7": "や",
-        "8": "ゆ",
-        "9": "よ",
-        "o": "ら",
-        "l": "り",
-        "．": "る",
-        "；": "れ",
-        "¥": "ろ",
-        "0": "わ",
-        "［": "を",
-        "y": "ん",
-        "￥": "ー",
-        "#": "ぁ",
-        "$": "ぅ",
-        "%": "ぇ",
-        "&": "ぉ",
-        "'": "ゃ",
-        "(": "ゅ",
-        ")": "ょ"
-    };
 
     // functions
     // suruto
@@ -280,14 +20,14 @@ exports.run = async (bot, message) => {
         let failFlag = false; // fail flag
 
         if (!fmInput) {
-            rsOutput = "⚠️ ERROR: Invalid input.";
+            rsOutput = bot.mSE("Input is invalid.");
             failFlag = true;
         }
 
         else {
             let splstr = wanakana.toHiragana(fmInput).trim().split(""); // hiragana convert, trim, and split input string
             if (splstr.length > 300) {
-                rsOutput = `⚠️ ERROR: Input string is too long (${splstr.length} - less than 300 characters, please!).`; // 50 character limit
+                rsOutput = bot.mSE(`Input string is too long (${splstr.length} - less than 300 characters, please!).`); // 50 character limit
                 failFlag = true;
             }
 
@@ -295,7 +35,7 @@ exports.run = async (bot, message) => {
                 
                 let i = 0, len = splstr.length;
                 while (i < len) {
-                    if (suruto[splstr[i]]) rsOutput = `${rsOutput}${suruto[splstr[i]]}`;
+                    if (scdb.suruto[splstr[i]]) rsOutput = `${rsOutput}${scdb.suruto[splstr[i]]}`;
                     else rsOutput = `${rsOutput}${splstr[i]}`;
                     ++i;
                 };
@@ -319,6 +59,10 @@ exports.run = async (bot, message) => {
                 i += 3;
                 cFlag = true;
             };
+
+            // I think it's funny that I hardcoded this and also I *still* haven't looked into simplifying it
+            // I will at one point, maybe
+            // but not now.
 
             if (splstr[i+2] && !cFlag) { // if the next two characters exist and the character hasn't been converted yet
                 // if current is a certain letter, and the next two are also certain letters, use special character
@@ -717,7 +461,7 @@ exports.run = async (bot, message) => {
                 else if (splstr[i] == "o") olist.push("お");
 
                 else { // either a full-width character or an ignored character
-                    if (fullwidth[splstr[i].toLowerCase()]) olist.push(fullwidth[splstr[i].toLowerCase()]);
+                    if (scdb.fullwidth[splstr[i].toLowerCase()]) olist.push(scdb.fullwidth[splstr[i].toLowerCase()]);
                     else olist.push(splstr[i].toLowerCase());
                 };
             };
@@ -739,25 +483,25 @@ exports.run = async (bot, message) => {
         let failFlag = false; // fail flag
 
         if (!fsInput) {
-            rmOutput = "⚠️ ERROR: Invalid input.";
+            rmOutput = bot.mSE("Input is invalid.");
             failFlag = true;
         }
 
         else {
-            let splstr = wanakana.toRomaji(fsInput, {customRomajiMapping: customRomaji}).trim().split(""); // trim whitespace and split into characters
+            let splstr = wanakana.toRomaji(fsInput, {customRomajiMapping: scdb.customRomaji}).trim().split(""); // trim whitespace and split into characters
             if (splstr.length < 1) { // empty
-                rmOutput = "⚠️ ERROR: Invalid input.";
+                rmOutput = bot.mSE("Input is invalid.");
                 failFlag = true;
             }
             else if (splstr.length > 300) { // 300 character limit
-                rmOutput = `⚠️ ERROR: Input string is too long (${splstr.length} - less than 300 characters, please!).`;
+                rmOutput = bot.mSE(`Input string is too long (${splstr.length} - less than 300 characters, please!).`);
                 failFlag = true;
             }
 
             else { // all good!
                 let i = 0, len = splstr.length;
                 while (i < len) {
-                    if (halfwidth[splstr[i]]) rmOutput = `${rmOutput}${halfwidth[splstr[i]]}`;
+                    if (scdb.halfwidth[splstr[i]]) rmOutput = `${rmOutput}${scdb.halfwidth[splstr[i]]}`;
                     else rmOutput = `${rmOutput}${splstr[i]}`;
                     ++i;
                 };
@@ -773,7 +517,7 @@ exports.run = async (bot, message) => {
         let splstr = rmInput.split(""); // split input into characters
         let i = 0, len = splstr.length;
         while (i < len) {
-            if (mikaeru[splstr[i]]) kmOutput = `${kmOutput}${mikaeru[splstr[i]]}`;
+            if (scdb.mikaeru[splstr[i]]) kmOutput = `${kmOutput}${scdb.mikaeru[splstr[i]]}`;
             else kmOutput = `${kmOutput}${splstr[i]}`;
             ++i;
         };
@@ -782,7 +526,7 @@ exports.run = async (bot, message) => {
     };
 
     let output = [];
-    if (message.lcCommand = "mikaeru") {
+    if (message.lcCommand == "mikaeru") {
         output = rmConvert(message.lcArgsText);
         if (!output[1]) output[0] = kmConvert(output[0]);
     }

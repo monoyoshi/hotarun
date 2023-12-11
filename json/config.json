@@ -1,9 +1,8 @@
 {
     "prefix": "-",
     "color": "0x2fcd73",
-    "allianceID": ["167788062531649537", "497608987340963852"],
     "kyuID": "167786662515048448",
-    "kyuAliases": ["kyu(rem)", "kyu\\_rem_", "kyu_rem_", "kyu", "q", "kyurem", "marth", "balls", "senpai", "jun-kun", "joker", "normalguy168"],
+    "kyuAliases": ["kyu(rem)", "kyu\\_rem_", "kyu_rem_", "kyu", "9", "q", "kyurem", "ren"],
     "hotAliases": ["hotar", "hontaru", "ほたる", "ホタル", "蛍", "ほんたる", "ホンタル"],
 
     "waveList": [
@@ -13,7 +12,7 @@
         "bye"
     ],
     "thankList": [
-        "ty",
+        "ty", "thank you",
         "thanks", "thx",
         "good job", "gj", "great job", "perfect job", "amazing job", "nice job", 
         "arigathanks",
