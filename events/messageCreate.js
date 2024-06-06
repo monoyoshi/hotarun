@@ -511,7 +511,7 @@ module.exports = async (bot, message) => {
 
         let cmd = bot.commands.get(message.lcCommand);
         if (!cmd) {
-            // shortcuts bc typing e is a lot more convenient than typing emoji
+            // shortcuts cuz typing "e" is a lot more convenient than typing "emoji"
             if (shortcuts[message.lcCommand]) cmd = bot.commands.get(shortcuts[message.lcCommand]);
             else if (stickers[message.lcCommand]) cmd = bot.commands.get("sticker");
             else return;

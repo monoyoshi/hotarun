@@ -15,7 +15,6 @@ exports.run = async (bot, message) => {
 
     // custom emoji
     const eDR = bot.emoji.cache.find(emote => emote.name == "dr");
-    const eHyphen = bot.emoji.cache.find(emote => emote.name == "hyphen");
     const eDown = bot.emoji.cache.find(emote => emote.name == "down");
 
     // dictionary
@@ -48,7 +47,7 @@ exports.run = async (bot, message) => {
         "z": "🆖",
         "!": "‼️",
         "?": "❓",
-        "-": eHyphen
+        "-": "➖"
     };
 
     function convert(istring) {
