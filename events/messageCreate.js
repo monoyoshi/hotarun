@@ -119,7 +119,6 @@ module.exports = async (bot, message) => {
             // player errors / ends
             player.on("idle", (error) => {
                 connection.destroy();
-                console.log(error);
             });
         });
     };

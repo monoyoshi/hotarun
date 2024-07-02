@@ -11,6 +11,19 @@ eight.js
 
 exports.run = (bot, message) => {
 
+    // inputs
+    // example: -8ball will I get the 5-star?
+    let lcArgsText = message.lcArgsText; // will I get the 5-star
+
+    if (["kill myself", "kill my self", "kms",
+        "i die",
+        "suicide",
+        "commit",
+        "unalive"].includes(lcArgsText.replace(/[,.<>?\/;':"\[\]{}\\|~`!@#$%\^&\*()\-=_+]/g, ""))) {
+        message.reply("no!\n(please do not abuse this command. thank you.)"); // hard no
+        return;
+    };
+
     let rng = Math.random(); // picks between positive, negative, neutral
     const responses = [];
 
@@ -31,7 +44,7 @@ exports.run = (bot, message) => {
             "no!",
             "never.",
             "not right now.",
-            "don't, uh, count on it.",
+            "don't count on it.",
             "negative.",
             "nah.",
             "nope!",

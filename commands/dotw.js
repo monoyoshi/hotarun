@@ -113,18 +113,19 @@ exports.run = (bot, message) => {
     };
 
     // long date display fix
+    date = date.toString();
     switch (true) {
-        case (date.toString().endsWith("1") && date.toString() != "11"):
-            date = date + "st";
+        case (date.endsWith("1") && date != "11"):
+            date += "st";
             break;
-        case (date.toString().endsWith("2") && date.toString() != "11"):
-            date = date + "nd";
+        case (date.endsWith("2") && date != "12"):
+            date += "nd";
             break;
-        case (date.toString().endsWith("3") && date.toString() != "11"):
-            date = date + "rd";
+        case (date.endsWith("3") && date != "13"):
+            date += "rd";
             break;
         default:
-            date = date + "th";
+            date += "th";
     };
 
     message.reply(`${strMonth[month-1]} ${date}, ${year} is a **${strDay[result]}**!`);

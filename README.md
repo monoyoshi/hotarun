@@ -2,7 +2,7 @@
 
 **hotaru(n)** is a Discord bot that does ... funny things. He is written with Javascript (Node.js) and uses Discord.js to interact with the Discord API.
 
-He is created and maintained by yours truly, [**kyu(rem)**](https://monoyoshi.github.io/) (**@kyu_rem_** on Discord). He started as an after-school pastime I made out of curiosity. Years later, lots of things happened, and he's like this now. At least he's funny...?
+He is created and maintained by yours truly, [**kyu(ren)**](https://bladewyrm.dev/) (**@kyu_rem_** on Discord). He started as an after-school pastime I made out of curiosity. Years later, lots of things happened, and he's like this now. At least he's funny...?
 
 Fun fact, his original name was much different...
 

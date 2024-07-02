@@ -2,7 +2,7 @@
 
 rate.js
 
-rate something. some stuff are rigged
+rate something. some stuff are rigged :)
 
 */
 
@@ -20,15 +20,11 @@ exports.run = (bot, message) => {
         case !lcArgsText:
             return;
         case bot.config.kyuAliases.includes(lcArgsText):
-        case lcArgsText == "dragalia lost":
+        case lcArgsText.includes("dragalia"):
         case lcArgsText == "me" && message.author.id == bot.config.kyuID:
             output = "10/10";
             break;
-        case lcArgsText == "hotaru":
-        case lcArgsText == "hotaru(n)":
-        case lcArgsText == "hotaru(n)#6467":
-        case lcArgsText == "hotarun":
-        case lcArgsText == "hotarumaru":
+        case lcArgsText.includes("hotaru"):
         case lcArgsText == "hontaru":
         case lcArgsText == "yourself":
         case lcArgsText == "urself":

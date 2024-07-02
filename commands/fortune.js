@@ -14,8 +14,7 @@ exports.run = (bot, message) => {
 
     // lucky number sequence generator
     // no duplicate numbers
-    let lnList = []; // empty list
-    lnList.push(Math.floor(Math.random() * 100)); // first number
+    const lnList = [Math.floor(Math.random() * 100)]; // new list with first randomized number
     while (lnList.length < 6) {
         let ln = Math.floor(Math.random() * 100);
         if (!lnList.includes(ln)) lnList.push(ln);

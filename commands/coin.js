@@ -3,7 +3,7 @@
 coin.js
 
 coin decision maker
-- flip it on the side (something that happens far less than heads / tails)
+- flip it on the side (something that happens twice as less than heads / tails)
 - flip it multiple times
 
 */

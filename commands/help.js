@@ -198,7 +198,7 @@ sorry about that, ${message.author.tag}! I should be fine from now on though, so
             .setTitle(`help for ${bot.user.tag}`)
             .setThumbnail(bot.user.avatarURL())
             .setDescription(
-`hello! I am **hotaru(n)**, a combat android! I think I was meant for the battlefield and all, but I like *this* life more. **kyu(rem)** is the one who gave me this new body and told me to have fun, so here I am!
+`hello! I am **hotaru(n)**, a combat android.
 
 currently, I am cooking. if you need help with commands, then you're kinda out of luck. sorry :(`
             )

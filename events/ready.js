@@ -42,6 +42,7 @@ module.exports = (bot) => {
         "remember TEXT DEFAULT ''", // remember text
         "soulscream TEXT DEFAULT ''", // soulscream text
 
+        // bdays
         "bdayMonth INTEGER DEFAULT 99",
         "bdayDate INTEGER DEFAULT 99"
     ];

@@ -105,6 +105,8 @@ dist
 
 # other
 memory/
-ignore/
+trash/
+
 *.lnk
+
 package-lock.json

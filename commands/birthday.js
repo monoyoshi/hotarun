@@ -2,15 +2,50 @@
 
 birthday.js
 
-birthday tracker. he will remember your birthday. after that, he can calculate the number of days left until the next birthday.
+birthday tracker. he will remember your birthday. after that, he can calculate the number of days left until your next birthday.
+he can also fetch other people's bdays
 
 */
 
 exports.run = (bot, message) => {
 
+    // functions
+
+    // long date display fix
+    function sdFix(d) {
+        d = d.toString();
+        switch (true) {
+            case (d.endsWith("1") && d != "11"):
+                return `${d}st`;
+            case (d.endsWith("2") && d != "12"):
+                return `${d}nd`;
+            case (d.endsWith("3") && d != "13"):
+                return `${d}rd`;
+            default:
+                return `${d}th`;
+        };
+    };
+
+    // birthday countdown count
+    function bdayCDC(m, d) {
+        let compareDate = new Date()
+        compareDate.setHours(0, 0, 0, 0);
+        
+        let bd;
+        if ((compareDate.getUTCMonth() + 1 > m)
+        || (compareDate.getUTCMonth() + 1 == m && compareDate.getUTCDate() > d)) {
+            bd = new Date(`${m}/${d}/${compareDate.getUTCFullYear() + 1}`);
+        }
+        else bd = new Date(`${m}/${d}/${compareDate.getUTCFullYear()}`);
+
+        let daysLeft = Math.round((bd.getTime() - compareDate.getTime()) / 86400000); // divide by number of milliseconds in a day
+        if (daysLeft == 1) return `\nthere's **only one day left** until then! 👀`;
+        else return `\nthere are **${daysLeft} days left** until then! ${bot.emoji.happy}`;
+    };
+
     // inputs
-    // example: -birthday July 30
-    let lcArgs = message.lcArgs; // ["july", "30"]
+    // example: -birthday August 19
+    let lcArgs = message.lcArgs; // ["august", "19"]
 
     const strMonth = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
 
@@ -20,54 +55,52 @@ exports.run = (bot, message) => {
             return;
         };
 
-        // long date display fix
-        let strDate = bot.userTable.bdayDate.toString();
-        switch (true) {
-            case (strDate.endsWith("1") && strDate != "11"):
-                strDate += "st";
-                break;
-            case (strDate.endsWith("2") && strDate != "11"):
-                strDate += "nd";
-                break;
-            case (strDate.endsWith("3") && strDate != "11"):
-                strDate += "rd";
-                break;
-            default:
-                strDate += "th";
-        };
-
-        let output = `hmm... my records tell me that your birthday is on **${strMonth[bot.userTable.bdayMonth - 1]} ${strDate}**.`;
+        let output = `hmm... my records tell me that your birthday is on **${strMonth[bot.userTable.bdayMonth - 1]} ${sdFix(bot.userTable.bdayDate)}**.`;
         if (bot.annualEvent(bot.userTable.bdayMonth, bot.userTable.bdayDate)) output += ` oh! it's your birthday where I'm at, so **happy birthday**! ${bot.emoji.party}`
-        else {
-            let d = new Date();
-            d.setHours(0,0,0,0);
-
-            let bd = `${bot.userTable.bdayMonth}/${bot.userTable.bdayDate}`;
-            if ((d.getUTCMonth() + 1 > bot.userTable.bdayMonth)
-            || (d.getUTCMonth() + 1 == bot.userTable.bdayMonth && d.getUTCDate() > bot.userTable.bdayDate)) {
-                bd = new Date(`${bd}/${d.getUTCFullYear() + 1}`)
-            }
-            else bd = new Date(`${bd}/${d.getUTCFullYear()}`);
-
-            let daysLeft = Math.round((bd.getTime() - d.getTime()) / 86400000); // divide by number of milliseconds in a day
-            if (daysLeft == 1) output += ` there's **only one day left** until then! 👀`;
-            else output += ` there are **${daysLeft} days left** until then! ${bot.emoji.happy}`;
-        }
+        else output += bdayCDC(bot.userTable.bdayMonth, bot.userTable.bdayDate);
         message.reply(output);
         return;
     };
 
-    if (["delete", "forget", "scrub"].includes(lcArgs[0])) {
-        bot.userTable.bdayMonth = 99;
-        bot.userTable.bdayDate = 99;
-        bot.setUserEntry("bdayMonth");
-        bot.setUserEntry("bdayDate");
-        message.reply("I forgor 💀");
-        return;
-    }
+    switch (lcArgs[0]) {
+        case "delete":
+        case "forget":
+        case "scrub": {
+            bot.userTable.bdayMonth = 99;
+            bot.userTable.bdayDate = 99;
+            bot.setUserEntry("bdayMonth");
+            bot.setUserEntry("bdayDate");
+            message.reply("I forgor 💀");
+            return;
+        };
+        case "check": {
+            let target = lcArgs[1];
+            if (target) {
+                let checked;
+                if (target.substring(0, 3) == "id:") if (message.author.id == bot.config.kyuID) checked = bot.sql.prepare(`SELECT * FROM users WHERE id = ?`).get(target.substring(3, target.length)); // owner only to prevent data leaks
+                else checked = bot.sql.prepare(`SELECT * FROM users WHERE id = ?`).get(target.substring(2, target.length - 1));
+
+                if (checked) {
+                    let output = `hmm... my records tell me that their birthday is on **${strMonth[checked.bdayMonth - 1]} ${sdFix(checked.bdayDate)}**.`
+                    if (bot.annualEvent(checked.bdayMonth, checked.bdayDate)) output += ` oh! it's their birthday where I'm at, so wish them a **happy birthday**! ${bot.emoji.party}`;
+                    else output += bdayCDC(checked.bdayMonth, checked.bdayDate);
+                    message.reply(output);
+                }
+                else message.reply("Hmm... I don't seem to know their birthday.");
+            }
+            return;
+        };
+    };
     
-    let month = lcArgs[0]; // "july"
-    let date = lcArgs[1]; // "30"
+    let month = lcArgs[0]; // "august"
+    let date = lcArgs[1]; // "19"
+
+    if (!date) {
+        if (month.includes("-")) lcArgs[0] = lcArgs[0].split("-");
+        else if (month.includes("/")) lcArgs[0] = lcArgs[0].split("/");
+        month = lcArgs[0][0];
+        date = lcArgs[0][1];
+    };
 
     // month check
     if (!parseInt(month)) { // if month is not a number,
