@@ -76,14 +76,15 @@ exports.run = (bot, message) => {
         case "check": {
             let target = lcArgs[1];
             if (target) {
-                let checked;
-                if (target.substring(0, 3) == "id:") if (message.author.id == bot.config.kyuID) checked = bot.sql.prepare(`SELECT * FROM users WHERE id = ?`).get(target.substring(3, target.length)); // owner only to prevent data leaks
-                else checked = bot.sql.prepare(`SELECT * FROM users WHERE id = ?`).get(target.substring(2, target.length - 1).toString());
+                if (target.substring(0, 3) == "id:") {
+                    if (message.author.id == bot.config.kyuID) target = bot.sql.prepare(`SELECT * FROM users WHERE id = ?`).get(target.substring(3, target.length)); // owner only to prevent data leaks
+                }
+                else target = bot.sql.prepare("SELECT * FROM users WHERE id = ?").get(target.substring(2, target.length - 1));
 
-                if (checked) {
-                    let output = `hmm... my records tell me that their birthday is on **${strMonth[checked.bdayMonth - 1]} ${sdFix(checked.bdayDate)}**.`
-                    if (bot.annualEvent(checked.bdayMonth, checked.bdayDate)) output += ` oh! it's their birthday where I'm at, so wish them a **happy birthday**! ${bot.emoji.party}`;
-                    else output += bdayCDC(checked.bdayMonth, checked.bdayDate);
+                if (target) {
+                    let output = `hmm... my records tell me that their birthday is on **${strMonth[target.bdayMonth - 1]} ${sdFix(target.bdayDate)}**.`
+                    if (bot.annualEvent(target.bdayMonth, target.bdayDate)) output += ` oh! it's their birthday where I'm at, so wish them a **happy birthday**! ${bot.emoji.party}`;
+                    else output += bdayCDC(target.bdayMonth, target.bdayDate);
                     message.reply(output);
                 }
                 else message.reply("Hmm... I don't seem to know their birthday.");
