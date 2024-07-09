@@ -21,10 +21,10 @@ exports.run = (bot, message) => {
             return;
         case bot.config.kyuAliases.includes(lcArgsText):
         case lcArgsText.includes("dragalia"):
-        case lcArgsText == "me" && message.author.id == bot.config.kyuID:
+        case lcArgsText == "me":
             output = "10/10";
             break;
-        case lcArgsText.includes("hotaru"):
+        case bot.config.hotAliases.includes(lcArgsText):
         case lcArgsText == "hontaru":
         case lcArgsText == "yourself":
         case lcArgsText == "urself":

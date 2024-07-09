@@ -2,7 +2,7 @@
     "prefix": "-",
     "color": "0x2fcd73",
     "kyuID": "167786662515048448",
-    "kyuAliases": ["kyu(rem)", "kyu\\_rem_", "kyu_rem_", "kyu", "9", "q", "kyurem", "ren"],
+    "kyuAliases": ["kyu(rem)", "kyu\\_rem_", "kyu_rem_", "kyu(ren)", "kyu\\_ren_", "kyu_ren_", "kyu", "9", "q", "kyurem", "kyuren", "ren"],
     "hotAliases": ["hotar", "hontaru", "ほたる", "ホタル", "蛍", "ほんたる", "ホンタル"],
 
     "waveList": [
@@ -22,11 +22,7 @@
         "merci",
         "gracias",
         "danke",
-        "tak",
-        "xiexie",
-        "salamat",
-        "spasibo",
-        "gratias tibi"
+        "salamat"
     ],
     "sleepList": [
         "gn", "night",
