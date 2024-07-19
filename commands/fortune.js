@@ -7,7 +7,7 @@ returns a fortune (from my very own stash) as well as 6 unique randomly generate
 
 */
 
-// stickers.json - list of fortunes for the sticker command
+// fortunes.json - list of fortunes for the fortune command
 const fcdb = require("../json/fortunes.json");
 
 exports.run = (bot, message) => {

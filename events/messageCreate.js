@@ -157,6 +157,50 @@ module.exports = async (bot, message) => {
         return bot.config.hotAliases.some(m => mention.includes(m));
     };
 
+
+    // bangboo
+    bot.bbDictionary = [
+        "en-nah",
+        "en-nah-ehn",
+        "en-nah-ne-nu",
+        "en-nah-nu",
+        "en-neh",
+        "en-nuh",
+
+        "ena",
+        "ena-nah",
+    
+        "ehn-na",
+        "ehn-ne",
+        "ehn-nah-noo",
+
+        "nah",
+        "nah-nu",
+        
+        "nha-nah",
+
+        "nu-na-nhu"
+    ];
+
+    bot.bbPunctiuation = [
+        "!",
+        "..."
+    ];
+
+    bot.bangboo = function bangboo(maxBBM = 2) {    
+        let output = "";
+        
+        let msgLength = Math.floor(Math.random() * maxBBM) + 1;
+    
+        let i = 0;
+        while (i < msgLength) {
+            output += `${bot.bbDictionary[Math.floor(Math.random() * bot.bbDictionary.length)]}${bot.bbPunctiuation[Math.floor(Math.random() * bot.bbPunctiuation.length)]} `;
+            ++i;
+        };
+
+        return output;
+    };
+
     // memory feature
     bot.userTable = bot.sql.prepare("SELECT * FROM users WHERE id = ?").get(message.author.id);
     bot.serverTable = bot.sql.prepare("SELECT * FROM servers WHERE id = ?").get(message.guild.id);
@@ -238,86 +282,6 @@ module.exports = async (bot, message) => {
         // interaction blacklist part 3: ignores messages in servers that aren't "trusted"
         if (bot.serverTable.trust == 0) return;
 
-        // dadbot
-        // ignore formatted text just to make things easier
-        if (!["||", "\`", "~~", "*", "_"].some(m => message.lcConTrim.includes(m))) { // formatted text (plus some unfortunate asterisks ig) ban
-            let input = message.lcConTrim.split(" "); // message to be processed
-            let output = message.conTrim.split(" "); // dadbot reply
-            let dbActive = false; // dadbot flag; true = dadbot
-
-            // singular trigger
-            let i = 0, ilen = input.length;
-            while (i < ilen) { // go through message
-                if (!dbActive && (input[i] == "im" || input[i] == "i'm")) {
-                    if (bot.aprilfools >= 0.69) { // april fools
-                        message.channel.send(`(MSTEXT__CHR_DADBOT_01_${i.toString().padStart(2, "0")}_${message.conTrim.length.toString().padStart(3, "0")})`);
-                        return;
-                    };
-
-                    output = output[i+1];
-                    if (output) dbActive = true; // dadbot is now triggered
-                };
-
-                ++i;
-            };
-
-            // i am trigger
-            if (!dbActive) { // single-word didn't trigger dadbot
-                i = 0;
-                while (i < ilen) { // go through message
-                    if (input[i+1] && !dbActive) { // if the word after still exists and dadbot hasn't been triggered
-                        if (input[i] == "i" && input[i+1] == "am") { // if the two words being looked at are "i" and "am"
-                            if (bot.aprilfools >= 0.69) { // april fools
-                                message.channel.send(`(MSTEXT__CHR_DADBOT_01_04_${message.conTrim.length.toString().padStart(3, "0")})`);
-                                return;
-                            };
-
-                            output = output[i+2];
-                            if (output) dbActive = true; // dadbot is now triggered
-                        };
-                    };
-
-                    ++i;
-                };
-            };
-
-            // output generation and message handling
-            if (dbActive && output.length > 0 && output.length <= 140) { // if dadbot has been triggered and the output is a valid length
-
-                let lcOutput = output.toLowerCase();
-                    
-                // easter eggs
-                if (hotaruMention(lcOutput)) {
-                    message.channel.send("hello- wait, what? hey! you're not me...!");
-                    return;
-                };
-
-                if (bot.userTable.notice == 0) return; // prevents unroled users from triggering dadbot; it can come off as weird
-
-                if (message.author.id != bot.config.kyuID && bot.config.kyuAliases.includes(lcOutput)) {
-                    message.channel.send("hello- wait, what? hey! you're not my...!");
-                    return;
-                };
-
-                // dadbot sussy baka
-                if (lcOutput == "sus") {
-                    bot.playLocal("amogus.mp3");
-                    if (bot.aprilfools >= 0.69) message.channel.send("(MSSUS)");
-                    else message.channel.send(`${message.author} is a sussy baka`);
-                    return;
-                };
-
-                // emoji cleaner using regex
-                if (!/\p{Emoji}/u.test(output)) output = output.replace(bot.punctList, ""); // exception if output ends with emoji
-
-                // filter
-                if (bot.config.dbBlacklist.some(str => lcOutput.includes(str))) return;
-
-                message.channel.send(`hello ${output.trim()}, I'm hotaru(n)!`);
-                return;
-            };
-        };
-
         // interaction blackkist part 4: ignores messages from users that aren't "noticed"
         if (bot.userTable.notice == 0) return;
 
@@ -368,6 +332,11 @@ module.exports = async (bot, message) => {
                 case message.lcConTrim.includes("aawagga") && Math.random() < 0.3:
                     if (bot.aprilfools >= 0.69) message.channel.send("(MSTEXT__CHR_AAWAGGA)");
                     else message.channel.send("aawagga");
+                    return;
+                // bangboo
+                case bot.bbDictionary.includes(message.lcConTrim):
+                    if (bot.aprilfools >= 0.69) message.channel.send("&%...C");
+                    message.channel.send(bot.bangboo());
                     return;
             };
 
@@ -502,6 +471,9 @@ module.exports = async (bot, message) => {
                 break;
             case "servericon":
                 output = `Here you go: ${message.guild.iconURL()}`;
+                break;
+            case "bangboo":
+                output = bot.bangboo();
         };
         if (output) {
             message.channel.send(output);
