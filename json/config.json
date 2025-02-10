@@ -6,18 +6,18 @@
     "hotAliases": ["hotar", "hontaru", "ほたる", "ホタル", "蛍", "ほんたる", "ホンタル"],
 
     "waveList": [
-        "hello", "hi", "hey", "henlo", "hewwo",
+        "hello", "hi", "hey", "henlo", "henwo", "hewwo",
         "yo",
-        "what's up",
-        "bye"
+        "what's up", "sup",
+        "bye",
+        "cya", "see ya", "see you"
     ],
     "thankList": [
         "ty", "thank you",
         "thanks", "thx",
-        "good job", "gj", "great job", "perfect job", "amazing job", "nice job", 
-        "arigathanks",
-        "arigatou",
-        "sankyuu",
+        "good job", "gj", "great job", "nice job", 
+        "ありがとう",
+        "サンキュー",
         
         "merci",
         "gracias",
@@ -33,13 +33,5 @@
         "birthday", "cake", "party",
         "<3", ":)", ":D", ":0", ":o", "^^", "XD", "owo",
         "🎊", "🎉", "🥳", "🎂", "🍰", "🧁"
-    ],
-    "dbBlacklist": [
-        "and", "but", "yet", "or", "nor", "for", "so",
-        "although", "altho", "because", "bc", "cuz", "'cuz", "cause", "'cause", "while", "in like", "like", "not", "i am", "im", "i'm", "i’m",
-        "bad", "stupid", "dumb", "weak", "fat", "ugly", "depressed", "awful", "sad", "nothing", "worthless", "lame",
-        "doing", "going", "gonna", "about to", "just", "also",
-        "a", "the", "sorry", "an", "yours", "urs",
-        "in"
     ]
 }

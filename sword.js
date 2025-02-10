@@ -100,12 +100,12 @@ bot.dailyEvent = function eventTime(startHour, endHour) {
     return false;
 };
 
-// "sleeps" from 02:00 to 09:59
+// "sleeps" from 01:00 to 08:59
 // it's to make him look alive, but cuz I don't really host him anywhere, it's useless. keeping it here for the future though
 // he'll sill respond like usual; this usually just triggers cosmetic changes
 // unlike other timekeeping functions, this one works with the timezone of wherever he's hosted at the moment
 bot.sleeping = function sleepTime() {
-    if (bot.dailyEvent(1, 10)) return true; // "asleep"
+    if (bot.dailyEvent(0, 9)) return true; // "asleep"
     else return false; // "awake"
 }
 
@@ -117,7 +117,7 @@ bot.game = function activity() {
     // overall status configuration (sleeping)
     if (bot.sleeping()) library = activities.sleep;
     else if (Math.random() >= 0.69 && bot.annualEvent(4, 1)) library = activities.aprilfools;
-    else library = activities.games;
+    else library = activities.main;
 
     // game determination
     let rng = Math.random(); // rng

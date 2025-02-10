@@ -30,6 +30,6 @@ exports.run = (bot, message) => {
 
     bot.userTable.remember = argsText.replace(/'/g, "''");
     bot.setUserEntry("remember");
-    message.reply("...noted.");
+    message.reply("I rember 😃");
     
 };

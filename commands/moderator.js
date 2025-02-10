@@ -11,7 +11,7 @@ this group of commands are more like a collection of miscellaneous admin command
 
 exports.run = async (bot, message) => {
 
-    if (message.author.id != bot.config.kyuID) return; // limited to kyu
+    if (message.author.id != bot.config.kyuID) return; // limited to kyu - for now
 
     // inputs
     // example : -Moderator Delete 69
@@ -21,7 +21,7 @@ exports.run = async (bot, message) => {
     let lcArgs = message.lcArgs; // ["delete", "69"]
 
     // umbrella command
-    if (lcCommand == "mod") {
+    if (lcCommand == "moderator" || lcCommand == "mod") {
         lcCommand = lcArgs.shift(); // lcCommand = "delete", lcArgs = ["69"]
         args.shift(); // ["69"]
         argsText = args.join(" "); // "69"

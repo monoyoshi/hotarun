@@ -76,10 +76,8 @@ exports.run = (bot, message) => {
         case "check": {
             let target = lcArgs[1];
             if (target) {
-                if (target.substring(0, 3) == "id:") {
-                    if (message.author.id == bot.config.kyuID) target = bot.sql.prepare(`SELECT * FROM users WHERE id = ?`).get(target.substring(3, target.length)); // owner only to prevent data leaks
-                }
-                else target = bot.sql.prepare("SELECT * FROM users WHERE id = ?").get(target.substring(2, target.length - 1));
+                if (target.substring(0, 3) == "id:" && message.author.id == bot.config.kyuID) target = bot.sql.prepare(`SELECT * FROM users WHERE id = ?`).get(target.substring(3, target.length)); // actual user id check: owner only to prevent data leaks
+                else target = bot.sql.prepare("SELECT * FROM users WHERE id = ?").get(target.substring(2, target.length - 1)); // ping check
 
                 if (target) {
                     let output = `hmm... my records tell me that their birthday is on **${strMonth[target.bdayMonth - 1]} ${sdFix(target.bdayDate)}**.`
@@ -87,7 +85,7 @@ exports.run = (bot, message) => {
                     else output += bdayCDC(target.bdayMonth, target.bdayDate);
                     message.reply(output);
                 }
-                else message.reply("Hmm... I don't seem to know their birthday.");
+                else message.reply("hmm... I don't seem to know their birthday.");
             }
             return;
         };

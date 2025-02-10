@@ -68,7 +68,7 @@ exports.run = (bot, message) => {
         '"': ".-..-.",
         "$": "...-..-",
         "@": ".--.-.",
-        " ": " "
+        " ": "/"
     };
 
     function convert(istring) { // convert string function

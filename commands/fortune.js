@@ -12,7 +12,7 @@ const fcdb = require("../json/fortunes.json");
 
 exports.run = (bot, message) => {
 
-    // lucky number sequence generator
+    // lucky number sequence generator 0-99
     // no duplicate numbers
     const lnList = [Math.floor(Math.random() * 100)]; // new list with first randomized number
     while (lnList.length < 6) {
